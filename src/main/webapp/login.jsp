@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/1ab94d0eba.js" crossorigin="anonymous"></script>
+    <script src="formlogin.js"></script>
     <title>Login</title>
     <link rel="stylesheet" href="login.css">
 </head>
