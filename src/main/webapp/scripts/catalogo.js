@@ -1,4 +1,4 @@
-var cards = document.querySelectorAll('.product-card');
+var cards = document.querySelectorAll('.product-image');
 
 cards.forEach(function(card) {
   card.addEventListener('click', function() {

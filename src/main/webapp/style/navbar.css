@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.navbar-brand #logo {
+    width: 100px; 
+    height: auto;
+}
+
+.btn-outline-success {
+	color: #000000 !important;
+	background-color: transparent !important;
+	border-color: #800080 !important;
+}
+
+.btn-outline-success:hover {
+	color: #000000 !important;
+	background-color: #ffff80 !important;
+	border-color: #800080 !important;
+}
