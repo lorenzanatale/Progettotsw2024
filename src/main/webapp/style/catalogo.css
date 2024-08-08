@@ -1,12 +1,6 @@
 @charset "UTF-8";
 
-p {
-	font-size: 20px;
-	text-align: center;
-	}
-
 body {
-	text-align: center;
 	background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat;
 }
 

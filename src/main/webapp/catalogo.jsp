@@ -11,6 +11,7 @@
 </head>
 <body>
 <jsp:include page="navbar.jsp" />
+
 <div class="product-container">
 	<div class="product-card">
 		<img class="product-image" src="img\chitarraacustica.jpg" alt="Chitarra acustica">
@@ -110,6 +111,9 @@
 		<p class="product-price">100€</p>
 	</div>
 </div>
+
+<jsp:include page="footer.jsp" />
+
 
 </body>
 </html>

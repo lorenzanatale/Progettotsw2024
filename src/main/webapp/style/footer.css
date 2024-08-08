@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+body {
+	line-height: 1 !important;
+}
+
+ .footer-div {
+	background-color: #f8f9fa;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    position: sticky;
+}
+
+.pfooter {
+	font-size: 12px !important;
+	color: #333;
+}
+
+.h4footer {
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	font-family: serif !important;
+}
+
+.prefooter {
+	font-size: 13px;
+	color: #333;
+}
