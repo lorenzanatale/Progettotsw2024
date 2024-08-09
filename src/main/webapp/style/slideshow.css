@@ -1,0 +1,115 @@
+/* slideshow.css */
+
+/* Slideshow container styling */
+.slideshow-container {
+    margin-top: 80px; /* Spazio sotto la navbar */
+    display: flex;
+    justify-content: center; /* Centratura orizzontale */
+    padding: 20px; /* Spazio interno per la bellezza */
+}
+
+.carousel {
+    width: 90%; /* Imposta la larghezza desiderata per lo slideshow */
+    max-width: 1200px; /* Imposta una larghezza massima se necessario */
+    margin: auto;
+}
+
+.carousel-item {
+    height: 500px; /* Imposta l'altezza desiderata per le immagini */
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #6A0DAD; /* Viola */
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: #FFD700; /* Giallo */
+}
+
+/* Feature section styling */
+.feature-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Optional: Control the size of the images if needed */
+.feature-box img {
+    max-height: 500px; /* Adatta l'altezza massima delle immagini se necessario */
+    object-fit: fill; /* Taglia l'immagine per adattarla al contenitore */
+}
+.feature-box {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.feature-box h3 {
+    margin-bottom: 15px;
+}
+
+.feature-box:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Call to action section styling */
+.cta-section {
+    background-color: #f8f9fa;
+    padding: 40px;
+}
+
+.cta-section h2 {
+    margin-bottom: 20px;
+}
+
+.cta-section .btn-primary {
+    background-color: #6A0DAD; /* Viola */
+    border-color: #6A0DAD; /* Viola */
+}
+
+.cta-section .btn-primary:hover {
+    background-color: #5b0c9d; /* Colore viola scuro */
+    border-color: #5b0c9d; /* Colore viola scuro */
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .carousel-item {
+        height: 300px;
+    }
+    .feature-box {
+        padding: 15px;
+    }
+    .cta-section {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 575px) {
+    .carousel-item {
+        height: 200px;
+    }
+    .feature-box {
+        padding: 10px;
+    }
+    .cta-section {
+        padding: 20px;
+    }
+}
+

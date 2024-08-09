@@ -3,9 +3,7 @@ package Control;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 @WebServlet(name = "Login", value = "/Login")
 public class Login extends HttpServlet {
@@ -13,6 +11,17 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+
+        //sessione
+        HttpSession session = request.getSession(); // Ottiene la sessione, o ne crea una nuova
+        session.setAttribute("username", username); // Memorizza l'username nella sessione
+        session.setMaxInactiveInterval(30 * 60); // La sessione scadrà dopo 30 minuti di inattività
+
+        // Gestione dei cookie
+        Cookie userCookie = new Cookie("username", username);
+        userCookie.setMaxAge(24 * 60 * 60); // Il cookie sarà valido per 1 giorno
+        response.addCookie(userCookie); // Aggiunge il cookie alla risposta
+
 
         if(username.equals("admin") && password.equals("admin")) {
             request.getRequestDispatcher("success.jsp").forward(request, response);
