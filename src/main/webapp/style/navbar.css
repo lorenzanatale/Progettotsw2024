@@ -1,8 +1,5 @@
 @charset "UTF-8";
-body{
-	background-color: #8e2de2;
-	font-family:'Trebuchet MS', Helvetica, sans-serif;
-}
+
 /* Navbar Branding */
 .navbar-brand #logo {
 	width: 100px;
@@ -16,7 +13,7 @@ body{
 
 /* Navbar Text Color */
 .navbar-nav .nav-link {
-	color: #ffffff !important; /* Colore del testo bianco per contrastare con il viola */
+	color: #000000 !important; /* Colore del testo bianco per contrastare con il viola */
 }
 
 .navbar-nav .nav-link:hover {

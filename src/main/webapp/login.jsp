@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Login</title>
     <link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="style/button.css">
 </head>
 <body>
 <img src="icon/logoss.png" id="logo">
@@ -46,6 +47,10 @@
             <p>Non hai un account? <a href="registrazione.jsp">Registrati</a></p>
         </div>
     </div>
+
+    <a href="home.jsp" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
     
 	<script src="scripts/formlogin.js"></script>
        
