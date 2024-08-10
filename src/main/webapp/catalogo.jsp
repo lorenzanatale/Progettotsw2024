@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Catalogo</title>
 <link href="style/catalogo.css" rel="stylesheet">
-<script src="scripts/catalogo.js"></script>
+<link href="style/navbar.css" rel="stylesheet">
 
 </head>
 <body>
