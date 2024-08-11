@@ -6,7 +6,7 @@
 </head>
 <body>
 <%
-    HttpSession session = request.getSession(false); // false evita la creazione di una nuova sessione se non esiste
+    HttpSession Session = request.getSession(false); // false evita la creazione di una nuova sessione se non esiste
     if (session != null && session.getAttribute("username") != null) {
         String username = (String) session.getAttribute("username");
         out.println("Benvenuto, " + username + "!");

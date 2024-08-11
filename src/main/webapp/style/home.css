@@ -1,5 +1,11 @@
+@charset "UTF-8";
+
 body {
-    background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat;
+    background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat !important;
 }
 
-
+.feature-box img {
+  max-height: 500px !important;
+  object-fit: contain !important;
+  aspect-ratio: 1 !important;
+}

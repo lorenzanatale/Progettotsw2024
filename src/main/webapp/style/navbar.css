@@ -1,34 +1,26 @@
 @charset "UTF-8";
 
-/* Navbar Branding */
 .navbar-brand #logo {
-	width: 100px;
-	height: auto;
+    width: 100px; 
+    height: auto;
 }
 
-/* Navbar Background Color */
-.navbar {
-	background-color: #6A0DAD !important; /* Colore viola */
+.btn-outline-success {
+	color: #000000 !important;
+	background-color: transparent !important;
+	border-color: #800080 !important;
 }
 
-/* Navbar Text Color */
 .navbar-nav .nav-link {
-	color: #000000 !important; /* Colore del testo bianco per contrastare con il viola */
+	color: #000000!important;
 }
 
 .navbar-nav .nav-link:hover {
-	color: #ffff80 !important; /* Colore del testo al passaggio del mouse */
-}
-
-/* Button Styling */
-.btn-outline-success {
-	color: #ffffff !important;
-	background-color: transparent !important;
-	border-color: #6A0DAD !important; /* Colore viola per il bordo */
+	color: #ffff80 !important;
 }
 
 .btn-outline-success:hover {
-	color: #000000 !important; /* Colore del testo al passaggio del mouse */
-	background-color: #ffff80 !important; /* Colore di sfondo al passaggio del mouse */
-	border-color: #6A0DAD !important; /* Colore viola per il bordo */
+	color: #000000 !important;
+	background-color: #ffff80 !important;
+	border-color: #800080 !important;
 }

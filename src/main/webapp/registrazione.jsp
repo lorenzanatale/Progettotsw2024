@@ -1,16 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: loren
-  Date: 09/08/2024
-  Time: 19:17
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Registrati</title>
-</head>
-<body>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="it">
@@ -74,9 +61,5 @@
 
     <script src="scripts/formregistration.js"></script>
 </main>
-</body>
-</html>
-
-
 </body>
 </html>
