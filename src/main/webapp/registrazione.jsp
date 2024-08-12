@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="style/registazione.css" rel="stylesheet">
     <link href="style/footer.css" rel="stylesheet">
+    <link href="style/button.css" rel="stylesheet">
     <title>Registrazione</title>
 
 </head>
@@ -55,9 +56,12 @@
     </form>
 
     <div class="footer">
-        <p>Già hai un account? <a href="login.jsp">Accedi</a></p>
+        <p>Hai già un account? <a href="login.jsp">Accedi</a></p>
     </div>
-
+	
+	<a href="home.jsp" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
 
     <script src="scripts/formregistration.js"></script>
 </main>
