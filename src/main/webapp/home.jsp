@@ -6,10 +6,7 @@
 <meta charset="UTF-8">
 <title>Home</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="style/stylesheet" href="slideshow.css">
-    <link rel="style/stylesheet" href="button.css">
     <link rel="stylesheet" href="style/home.css">
-    <link rel="style/stylesheet" href="navbar.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="style/slideshow.css" rel="stylesheet">
     <script src="slideshow.js"></script>

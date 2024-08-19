@@ -1,15 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@charset "UTF-8";
 
-.back-button {
+#arrow {
     position: absolute;
+    height: 30px;
+    width: 30px;
     top: 20px;
     left: 20px;
-    color: #800080; 
-    text-decoration: none;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-}
-
-.back-button:hover {
-    color: #600060;
 }
