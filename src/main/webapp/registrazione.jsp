@@ -1,26 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: loren
-  Date: 09/08/2024
-  Time: 19:17
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Registrati</title>
-</head>
-<body>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/1ab94d0eba.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="style/registazione.css" rel="stylesheet">
-    <link href="style/footer.css" rel="stylesheet">
+    <link href="style/button.css" rel="stylesheet">
     <title>Registrazione</title>
 
 </head>
@@ -68,15 +54,14 @@
     </form>
 
     <div class="footer">
-        <p>Già hai un account? <a href="login.jsp">Accedi</a></p>
+        <p>Hai già un account? <a href="login.jsp">Accedi</a></p>
     </div>
-
+	
+	<a href="home.jsp" class="back-button">
+        <img src="icon/arrow.png" id="arrow">
+    </a>
 
     <script src="scripts/formregistration.js"></script>
 </main>
-</body>
-</html>
-
-
 </body>
 </html>

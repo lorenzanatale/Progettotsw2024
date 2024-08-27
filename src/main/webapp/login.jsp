@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/1ab94d0eba.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Login</title>
     <link rel="stylesheet" href="style/login.css">
@@ -49,7 +48,7 @@
     </div>
 
     <a href="home.jsp" class="back-button">
-        <i class="fas fa-arrow-left"></i>
+        <img src="icon/arrow.png" id="arrow">
     </a>
     
 	<script src="scripts/formlogin.js"></script>
