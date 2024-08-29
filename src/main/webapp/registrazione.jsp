@@ -5,16 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="style/registazione.css" rel="stylesheet">
+    <link href="style/registrazione.css" rel="stylesheet">
     <link href="style/button.css" rel="stylesheet">
+
     <title>Registrazione</title>
 
 </head>
 <body>
 <img src="icon/logoss.png" id="logo">
-<main class="container">
-    <h2>Registrazione</h2>
-    <form id="registrationForm" action="Register" method="post">
+
+<div class="container">
+    <h3>Registrazione</h3>
+    <form id="registrationForm" action="${pageContext.request.contextPath}/registrazioneServlet" method="post">
+        <div class="input-field">
+            <label for="username">Nome Utente:</label>
+            <input type="text" name="username" id="username" placeholder="Enter Your Username" required>
+            <div class="underline"></div>
+        </div>
         <div class="input-field">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" placeholder="Enter Your Email" required>
@@ -30,26 +37,6 @@
             <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Your Password" required>
             <div class="underline"></div>
         </div>
-        <div class="input-field">
-            <label for="via">Via:</label>
-            <input type="text" name="via" id="via" placeholder="Enter Your Address" required>
-            <div class="underline"></div>
-        </div>
-        <div class="input-field">
-            <label for="nazionalita">Nazionalità:</label>
-            <input type="text" name="nazionalita" id="nazionalita" placeholder="Enter Your Nationality" required>
-            <div class="underline"></div>
-        </div>
-        <div class="input-field">
-            <label for="citta">Città:</label>
-            <input type="text" name="citta" id="citta" placeholder="Enter Your City" required>
-            <div class="underline"></div>
-        </div>
-        <div class="input-field">
-            <label for="cap">CAP:</label>
-            <input type="text" name="cap" id="cap" placeholder="Enter Your Postal Code" required>
-            <div class="underline"></div>
-        </div>
         <input type="submit" value="Registrati">
     </form>
 
@@ -58,10 +45,11 @@
     </div>
 	
 	<a href="home.jsp" class="back-button">
+        <i class="fas fa-arrow-left"></i>
         <img src="icon/arrow.png" id="arrow">
     </a>
+</div>
 
-    <script src="scripts/formregistration.js"></script>
-</main>
+<script src="scripts/registrazione.js"></script>
 </body>
 </html>
