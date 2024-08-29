@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -13,7 +13,7 @@
 <img src="icon/logoss.png" id="logo">
 <main class="container">
     <h2>Login</h2>
-    <form id="loginForm" action="">
+    <form id="loginForm" action="${pageContext.request.contextPath}/loginServlet" method="post">
         <div class="input-field">
             <label for="email"></label><input type="email" name="email" id="email"
                    placeholder="Enter Your Email">
@@ -25,20 +25,20 @@
             <div class="underline"></div>
         </div>
 
-        <input type="submit" value="Continua">
+        <input type="submit" value="Login">
     </form>
 
     <div class="footer">
         <span>O Accedi Tramite Social Media</span>
         <div class="social-fields">
             <div class="social-field twitter">
-                <a href="#">
+                <a href="https://x.com/i/flow/login">
                     <i class="fab fa-twitter"></i>
                     Accedi con Twitter
                 </a>
             </div>
             <div class="social-field facebook">
-                <a href="#">
+                <a href="https://www.facebook.com/">
                     <i class="fab fa-facebook-f"></i>
                     Accedi con Facebook
                 </a>

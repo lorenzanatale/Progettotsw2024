@@ -25,7 +25,7 @@
                     <a class="nav-link" href="login.jsp">Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="catalogo.jsp">Catalogo</a>
+                    <a class="nav-link" href="catalogoServlet.java">Catalogo</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">

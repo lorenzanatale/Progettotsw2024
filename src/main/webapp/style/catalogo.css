@@ -4,19 +4,15 @@ body {
 	background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat;
 }
 
-img {
-	max-width: 210px;
- 	vertical-align: middle;
- }
-
 .product-image {
-	width: 210px;;
-	object-fit: contain;
+	width: 210px;
+	height: 210px;
+	border-radius: 20px;
 }
 
 .product-title {
-	padding: 10px;
 	text-align: center;
+	padding: 10px;
 	font-size: 20px;
 	font-weight: bold;
 }
@@ -29,6 +25,7 @@ img {
 .product-price {
 	text-align: center;
 	font-size: 18px;
+	margin-top: 20px;
 }
 
 .product-container {
