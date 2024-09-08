@@ -12,7 +12,7 @@
     <script src="slideshow.js"></script>
 </head>
 <body>
-<jsp:include page="navbar.jsp" />
+<%@ include file="navbar.jsp" %>
 
 <body>
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -23,7 +23,7 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <a href="catalogo.jsp">
+            <a href="catalogoServlet">
                 <img src="img/welcome.png" class="d-block w-100" alt="Slide 1"></a>
 
 
@@ -84,6 +84,6 @@
     </div>
 </div>
 
-<jsp:include page="footer.jsp" />
+<%@ include file="footer.jsp" %>
 
 </body>

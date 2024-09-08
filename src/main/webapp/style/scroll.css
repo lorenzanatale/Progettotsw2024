@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+.scroll-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.scroll-button {
+	background-color: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.scroll-button.left {
+    left: 0;
+}
+
+.scroll-button.right {
+    right: 0;
+}
+
+img#lArrow {
+	width: 20%;
+}
+
+img#rArrow {
+	width: 20%;
+}

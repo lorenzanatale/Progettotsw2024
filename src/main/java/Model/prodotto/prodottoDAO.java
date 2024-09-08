@@ -85,7 +85,7 @@ public class prodottoDAO extends abstractDAO implements interfacciaDAO<prodottoB
 	    
 	    @Override
 	    public long doSave(prodottoBean prodotto) throws SQLException {
-	        String query = "INSERT INTO Prodotto (Nome, Disponibilità, Categoria, IVA, Prezzo, imgPath, Descrizione, Visibilità) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	        String query = "INSERT INTO Prodotto (Nome, Disponibilità, Categoria, IVA, Prezzo, imgPath, Descrizione, visibile) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	        long generatedKey = -1;
 	        try (PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 	            statement.setString(1, prodotto.getNome());
@@ -109,7 +109,7 @@ public class prodottoDAO extends abstractDAO implements interfacciaDAO<prodottoB
 	    @Override
 	    public void doUpdate(prodottoBean prodotto) throws SQLException {
 
-	        String query = "UPDATE Prodotto SET Nome = ?, Disponibilità = ?, Taglia = ?, Categoria = ?, MinEta = ?, MaxEta = ?, IVA = ?, Prezzo = ?, Sterilizzati = ?, imgPath = ?, descrizione = ?, visibile = ? WHERE id = ?";
+	        String query = "UPDATE Prodotto SET Nome = ?, Disponibilità = ?, Categoria = ?, IVA = ?, Prezzo = ?, imgPath = ?, descrizione = ?, visibile = ? WHERE id = ?";
 	        try (PreparedStatement statement = connection.prepareStatement(query)) {
 	            statement.setString(1, prodotto.getNome());
 	            statement.setInt(2, prodotto.getDisponibilita());
@@ -119,7 +119,7 @@ public class prodottoDAO extends abstractDAO implements interfacciaDAO<prodottoB
 	            statement.setString(6, prodotto.getImgPath());
 	            statement.setString(7, prodotto.getDescrizione());
 	            statement.setInt(8, prodotto.isVisibile() ? 1 : 0);
-	            statement.setLong(13, prodotto.getId());
+	            statement.setLong(9, prodotto.getId());
 	            statement.executeUpdate();
 	        }
 	    }

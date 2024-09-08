@@ -1,0 +1,272 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f4;
+}
+h5 {
+	color: #666 !important;
+}
+
+h6 {
+	color: #666 !important;
+}
+
+.admin-button {
+	display: flex;
+  	justify-content: flex-end;
+ 	 margin-top: -30px;
+}
+
+#editButton.adminButton {
+	margin-right: 10px;
+}
+
+#visibilityButton.adminButton {
+	margin-right: 10px;
+}
+
+.adminButton,
+.visibilityButton {
+	padding: 10px 20px;
+	background-color: #8080ff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.adminButton:hover,
+.visibilityButton:hover {
+	background-color: #8000ff;
+}
+
+.product-details {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+.product-image {
+	max-width: 550px;
+	height: 550px;
+}
+
+.product-info-specs {
+	background-color: #f9f9f9;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+	display: flex;
+	justify-content: space-around;
+}
+
+#product-info,
+#product-specs {
+	width: 45%;
+}
+
+#product-info h1 {
+	color: #333;
+	font-size: 30px;
+}
+
+#product-specs h2 {
+	color: #333;
+	font-size: 27px;
+}
+
+#product-info p,
+#product-specs p {
+	color: #666;
+	font-size: 17px;
+	line-height: 1.6;
+}
+
+#product-info h4 {
+	color: #333;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+.addToCart {
+	padding: 37px !important;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	background-color: #f9f9f9;
+	border-radius: 5px;
+	box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.addToCartButton {
+	display: grid;
+	padding: 10px 20px;
+	background-color: #8080ff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+input#quantity {
+	margin-bottom: 15px;
+	width: 50px;
+}
+
+.addToCartButton:hover {
+	background-color: #8000ff;
+}
+
+.review-form {
+	padding: 20px;
+	background-color: #f9f9f9;
+	border-radius: 5px;
+	box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.review-form input[type="submit"] {
+	padding: 10px 20px;
+	background-color: #8080ff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.review-form input[type="submit"]:hover {
+	background-color: #8000ff;
+}
+
+.rating {
+	background-color: #f9f9f9 !important;
+}
+
+#arrow {
+  display:flex;
+  justify-content: flex-start;
+  height: 30px;
+  width: 30px;
+  left: 20px;
+  position: relative;
+}
+
+#addReviewButton {
+	padding: 10px 20px;
+	background-color: #8080ff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+#addReviewButton:hover {
+	background-color: #8000ff;
+}
+
+.reviewOrModify {
+	background-color: #f9f9f9;
+	padding: 37px;
+}
+
+.product-info-mod {
+	background-color: #f9f9f9;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+	padding: 10px;
+	border-radius: 5px;
+	margin-top: 20px;
+	max-width: 80%;
+	margin: auto;
+}
+
+.product-info-mod label {
+	color: #333;
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+.product-info-mod input[type="text"],
+.product-info-mod input[type="number"],
+.product-info-mod select {
+	width: 100%;
+	padding: 10px;
+	margin-top: 5px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+.product-info-mod input[type="submit"] {
+	padding: 10px 20px;
+	background-color: #8080ff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-top: 10px;
+}
+
+.product-info-mod input[type="submit"]:hover {
+	background-color: #8000ff;
+}
+
+#addReview {
+	display: none;
+}
+
+.reviews {
+	background-color: #f9f9f9;
+	padding: 37px;
+}
+
+.inline {
+	display: inline-block;
+	vertical-align: text-bottom;
+}
+
+.deleteReviewButton {
+	padding: 10px 20px;
+	background-color: #8080ff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-top: 10px;
+}
+.deleteReviewButton:hover {
+	background-color: #8000ff;
+}
+
+#editProductForm {
+	display: none;
+	z-index: 1;
+	width: 50%;
+	height: 100%;
+	overflow: auto;
+	background-color: #f9f9f9;
+}
+
+.mayLike {
+	padding-top: 37px;
+  	padding-left: 37px;
+  	margin-bottom: 0;
+}
+
+.firstRow {
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+@media (min-width: 900px) {
+    .admin-button {
+	display: flex;
+	justify-content: flex-end;
+}
+
+}

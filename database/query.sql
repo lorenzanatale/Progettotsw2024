@@ -36,20 +36,20 @@ INSERT INTO Carrello (IdUtente) VALUES
 
 INSERT INTO ProdottoOrdine (nome, idProdotto, IdOrdine, quantità, prezzo, IVA) VALUES
 ('Chitarra Acustica', 1, 1, 1, 99.99, '22'),
-('Microfono USB', 2, 2, 2, 149.99, '22'),
-('Software Produzione Audio', 3, 3, 1, 199.99, '22'),
-('Cuffie da Studio', 3, 1, 2, 129.99, '22'),
-('Amplificatore per Chitarra', 5, 2, 1, 299.99, '22'),
-('Batteria Elettronica', 8, 3, 1, 749.99, '22');
+('Microfono USB', 6, 2, 2, 149.99, '22'),
+('Software Produzione Audio', 12, 3, 1, 199.99, '22'),
+('Cuffie da Studio', 8, 1, 2, 129.99, '22'),
+('Amplificatore per Chitarra', 7, 2, 1, 299.99, '22'),
+('Batteria Elettronica', 2, 3, 1, 749.99, '22');
 
 INSERT INTO ProdottoCarrello (idProdotto, IdCarrello, quantita, nome) VALUES
-(1, 1, 1, "Software di Editing Video"),
-(2, 2, 1, "Chitarra Acustica"),
-(3, 2, 3, "Plettro in Nylon"),
-(4, 3, 2, "Basso Elettrico"),
-(5, 3, 1, "Cavo Jack 6.3mm");
+(11, 1, 1, "Software di Editing Video"),
+(1, 2, 1, "Chitarra Acustica"),
+(10, 2, 3, "Plettro in Nylon"),
+(5, 3, 2, "Basso Elettrico"),
+(9, 3, 1, "Cavo Jack 6.3mm");
 
 INSERT INTO Recensione (idUtente, titolo, commento, valutazione, data, idProdotto) VALUES
 (1, 'Ottima chitarra', 'La qualità del suono è incredibile.', 4.5, '2023-08-10', 1),
-(2, 'Microfono perfetto', 'Audio cristallino e senza interferenze.', 5.0, '2023-08-11', 2),
-(3, 'Software utile', 'Un software indispensabile per i produttori.', 4.0, '2023-08-12', 3);
+(2, 'Microfono perfetto', 'Audio cristallino e senza interferenze.', 5.0, '2023-08-11', 6),
+(3, 'Software utile', 'Un software indispensabile per i produttori.', 4.0, '2023-08-12', 12);
