@@ -39,23 +39,24 @@ public class registrazioneServlet extends HttpServlet {
     	utenteBean utente = new utenteBean();
     	
     	Optional<String> hashedPassword = Sicurezza.hashPassword(password);
-    	if (hashedPassword.isEmpty()) {
-    			System.out.println("Password non valida");
-    			return false;
-    	}
-    		
-    	utente.setUsername(username);
-    	utente.setEmail(email);
-    	utente.setPassword(hashedPassword.get());
-    	utente.setIsAdmin(false);
-    		
-    	try (utenteDAO user = new utenteDAO()) {
-    		long userId = user.doSave(utente);
-    		System.out.println("Utente salvato con successo con ID: " + userId);
-    		return true;
-		} catch(SQLException e) {
-			e.printStackTrace();
-				return false;
-	    }
-	}
+        if (hashedPassword.isPresent()) {
+            utente.setUsername(username);
+            utente.setEmail(email);
+            utente.setPassword(hashedPassword.get());
+            utente.setIsAdmin(false);
+
+            try (utenteDAO user = new utenteDAO()) {
+                long userId = user.doSave(utente);
+                System.out.println("Utente salvato con successo con ID: " + userId);
+                return true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else {
+            System.out.println("Password non valida");
+            return false;
+        }
+
+    }
 }

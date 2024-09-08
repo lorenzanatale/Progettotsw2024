@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.catalina.connector.Response;
+
 
 public class utenteDAO extends abstractDAO implements interfacciaDAO<utenteBean, Long> {
     public utenteDAO() throws EmptyPoolException {

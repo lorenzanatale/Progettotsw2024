@@ -1,10 +1,9 @@
 package Control;
 
 import java.io.*;
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+
 import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 
 @WebServlet(name = "carrelloServlet", value = "/carrello-servlet")
 public class carrello extends HttpServlet {

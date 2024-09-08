@@ -26,7 +26,7 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <a href="catalogo.jsp">
+            <a href="${pageContext.request.contextPath}/catalogoServlet">
                 <img src="img/welcome.png" class="d-block w-100" alt="Slide 1"></a>
 
 
