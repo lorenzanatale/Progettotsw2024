@@ -6,30 +6,49 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Catalogo</title>
+<title>Catalogo Prodotti</title>
 <link href="style/catalogo.css" rel="stylesheet">
 
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
+	<%@ include file="navbar.jsp" %>
 	
-	<% List<prodottoBean> prodotti = (List<prodottoBean>) request.getAttribute("prodotti");%>
+	<% boolean isAdmin = session.getAttribute("isAdmin") != null && (Boolean) session.getAttribute("isAdmin");
+	if (session.getAttribute("user") != null && isAdmin) { %>
+	<div id="firstRow">
+		<button id="adminButton" class="adminButton">Aggiungi Prodotto</button>
+	<% } %>
+	</div>
+	
+	<script>
+    document.getElementById('adminButton').addEventListener('click', function () {
+        window.location.href = 'aggiungiProdotto.jsp';
+    });
+	</script>
+	
+	
+	<% List<prodottoBean> prodotti = (List<prodottoBean>) request.getAttribute("prodotti"); %>
 	
 	<div class="product-container">
-	    <%for(prodottoBean prodotto : prodotti) { %>
+	    <% for(prodottoBean prodotto : prodotti) { 
+	    	 if(!isAdmin && !prodotto.isVisibile()) {
+	    		 continue;
+	    	 } %>
 			<div class="product-card">
-				<img class="product-image" src="<%= prodotto.getImgPath()%>">
-					<a href="product?id=<%=prodotto.getId()%>"></a>
+				<a href="prodottoServlet?id=<%= prodotto.getId() %>">
+					<img class="product-image" src="<%= prodotto.getImgPath() %>">
+				</a>
                 <div class="product-details">
-					<h2 class="product-title"><%= prodotto.getNome()%></h2>
-					<h3 class="product-description"><%= prodotto.getDescrizione()%></h3>
-					<p class="product-price"><%=prodotto.getPrezzo()%>€</p>
+					<h2 class="product-title"><%= prodotto.getNome() %></h2>
+					<h3 class="product-description"><%= prodotto.getDescrizione() %></h3>
+					<p class="product-price"><%= prodotto.getPrezzo() %>€</p>
 				</div>
 			</div>
 	    <% } %>
     </div>
+    
 	<script src="scripts/catalogo.js"></script>
-	<jsp:include page="footer.jsp" />
+	<%@ include file="footer.jsp" %>
 
 </body>
 </html>

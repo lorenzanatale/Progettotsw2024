@@ -19,7 +19,7 @@
     <form id="registrationForm" action="${pageContext.request.contextPath}/registrazioneServlet" method="post">
         <div class="input-field">
             <label for="username">Nome Utente:</label>
-            <input type="text" name="username" id="username" placeholder="Enter Your Username" required>
+            <input autofocus type="text" name="username" id="username" placeholder="Enter Your Username" required>
             <div class="underline"></div>
         </div>
         <div class="input-field">
@@ -43,8 +43,25 @@
     <div class="footer">
         <p>Hai già un account? <a href="login.jsp">Accedi</a></p>
     </div>
-	
-	<a href="home.jsp" class="back-button">
+
+
+		<%
+		if (session.getAttribute("emailExists") != null && (boolean) session.getAttribute("emailExists")) {
+			session.removeAttribute("emailExists"); // Rimuovi l'attributo dopo averlo utilizzato
+		%>
+		<script>
+			Swal.fire({
+				icon : 'error',
+				title : 'Ops...',
+				text : 'L\'email inserita è già utilizzata!'
+			})
+		</script>
+		<%
+		}
+		%>
+
+
+		<a href="home.jsp" class="back-button">
         <i class="fas fa-arrow-left"></i>
         <img src="icon/arrow.png" id="arrow">
     </a>

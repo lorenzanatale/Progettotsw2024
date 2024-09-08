@@ -51,6 +51,27 @@ body {
   transform: scale(1.1);
 }
 
+.adminButton {
+	padding: 10px 20px;
+	background-color: #8080ff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.adminButton:hover {
+	background-color: #8000ff;
+}
+
+#firstRow {
+	margin-top: 15px;
+  	display: flex;
+  	justify-content: flex-end;
+  	margin-right: 10px;
+}
+
 @media (min-width: 650px) {
 	.product-container {
 		grid-template-columns: repeat(2, auto);

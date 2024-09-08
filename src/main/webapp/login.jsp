@@ -15,7 +15,7 @@
     <h2>Login</h2>
     <form id="loginForm" action="${pageContext.request.contextPath}/loginServlet" method="post">
         <div class="input-field">
-            <label for="email"></label><input type="email" name="email" id="email"
+            <label for="email"></label><input autofocus type="email" name="email" id="email"
                    placeholder="Enter Your Email">
             <div class="underline"></div>
         </div>
