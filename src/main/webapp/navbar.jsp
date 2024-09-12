@@ -23,9 +23,6 @@
 	                    <a class="nav-link active" aria-current="page" href="home.jsp">Home</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="profilo.jsp">Profilo</a>
-	                </li>
-	                <li class="nav-item">
 	                    <a class="nav-link" href="${pageContext.request.contextPath}/catalogoServlet">Prodotti</a>
 	                </li>
 	            </ul>
@@ -37,10 +34,14 @@
 	        		<img src="icon/profile.png" id="profile">
 	        		<div id="dropdown-menu" class="dropdown-menu" aria-labelledby="profile-link" style="display: none;">
 	        		<% if (session != null && session.getAttribute("user") != null) { %>
+	        			<a class="dropdown-item" href="profiloUtente.jsp">Profilo</a>
+	        			<div class="dropdown-divider"></div>
 	        			<a class="dropdown-item" href="${pageContext.request.contextPath}/logoutServlet">Logout</a>
 	        		<% } else { %>
-	        			<a class="dropdown-item" href="login.jsp">Login</a>
-	        		<% } %>
+	        		<%	if (session.getAttribute("user") == null) { %>
+            				<a class="dropdown-item" href="login.jsp">Login</a>
+            		<% } 
+            			}%>
 	    			</div>
 	    		</a>
 	    	</div>    		

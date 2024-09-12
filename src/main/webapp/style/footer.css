@@ -1,13 +1,15 @@
 @charset "UTF-8";
+.footer-divider {
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
 
- .footer-div {
-	background-color: #f8f9fa;
+.footer-div {
+	background-color: transparent;
     text-align: center;
-    padding: 10px;
-    margin-top: 10px;
     width: 100%;
     position: sticky;
-    line-height: 1 !important;
 }
 
 .pfooter {
@@ -19,6 +21,7 @@
 	font-size: 15px;
 	font-weight: bold;
 	color: #333;
+	margin-top: 15px;
 
 }
 

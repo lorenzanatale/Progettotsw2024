@@ -10,7 +10,19 @@ body {
 	border-radius: 20px;
 }
 
+.product-details {
+	display: flex;
+	flex-direction: column; /* Dispone gli elementi in colonna */
+	align-items: center; /* Centra gli elementi orizzontalmente */
+}
+
+.product-title, .product-description, .product-price {
+	margin: 10px 0; /* Margine per dare spazio tra gli elementi */
+	text-align: center; /* Centra il testo */
+}
+
 .product-title {
+	height: 50px;
 	text-align: center;
 	padding: 10px;
 	font-size: 20px;
@@ -18,14 +30,16 @@ body {
 }
 
 .product-description {
+	height: 70px;
 	text-align: center;
 	font-size: 16px;
+
 }
 
 .product-price {
 	text-align: center;
 	font-size: 18px;
-	margin-top: 20px;
+	margin-top: auto;
 }
 
 .product-container {
@@ -45,6 +59,10 @@ body {
 	color: #333;
 	width: 250px;
 	transition: transform 0.3s;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 445px;
 }
 
 .product-card:hover {

@@ -29,28 +29,14 @@
     </form>
 
     <div class="footer">
-        <span>O Accedi Tramite Social Media</span>
-        <div class="social-fields">
-            <div class="social-field twitter">
-                <a href="https://x.com/i/flow/login">
-                    <i class="fab fa-twitter"></i>
-                    Accedi con Twitter
-                </a>
-            </div>
-            <div class="social-field facebook">
-                <a href="https://www.facebook.com/">
-                    <i class="fab fa-facebook-f"></i>
-                    Accedi con Facebook
-                </a>
-            </div>
             <p>Non hai un account? <a href="registrazione.jsp">Registrati</a></p>
-        </div>
     </div>
 
     <a href="home.jsp" class="back-button">
         <img src="icon/arrow.png" id="arrow">
     </a>
     
+    <%@ include file="footer.jsp" %>
 	<script src="scripts/formlogin.js"></script>
        
 </main>

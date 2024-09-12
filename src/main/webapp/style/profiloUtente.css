@@ -1,0 +1,162 @@
+@charset "UTF-8";
+.info {
+	margin: 15px;
+}
+
+.info h1 {
+	margin-bottom: 2rem;
+	position: relative;
+	font-style: italic;
+	margin-top: 2rem;
+}
+
+#infoSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#infoSection img {
+    margin-right: 20px;
+}
+
+.order-box {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+h1{
+    color: #8080ff;
+}
+
+.order-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-right: 15px;
+}
+
+.order-item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    #infoSection img {
+        margin-right: 0;
+    }
+}
+
+.empty-order {
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.empty-order i {
+    font-size: 50px;
+    color: #ccc;
+}
+
+.empty-order p {
+    font-size: 20px;
+    color: #666;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.edit-button {
+    padding: 5px 10px;
+    background-color: #8080ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: #8000ff;
+}
+
+.infoUser {
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.infoUser h1 {
+    color: #8080ff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.edit-input {
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-submit {
+    padding: 5px 10px; 
+    background-color: #8080ff; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.edit-submit:hover {
+    background-color: #8000ff;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+    color: #333;
+}
+
+@media (max-width: 900px) {
+    .edit-button {
+        margin-bottom: 10px;
+    }
+
+    .edit-input {
+        margin-bottom: 10px;
+    }
+}

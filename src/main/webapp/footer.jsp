@@ -8,10 +8,11 @@
 <link rel="stylesheet" type="text/css" href="style/footer.css">
 </head>
 <body>
+<hr class="footer-divider">
 <div class="footer-div">
 	<footer class="footer">
-        <p class="pfooter">&copy; 2024 Soundia. Tutti i diritti riservati.</p>
-        <h4 class="h4footer">Contatti</h4>
+        <div class="pfooter">&copy; 2024 Soundia. Tutti i diritti riservati.</div>
+        <div class="h4footer">Contatti</div>
         <pre class="prefooter">
 Email: sarameo@gmail.com
 Telefono: +39 333 1234567
