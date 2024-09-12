@@ -113,14 +113,17 @@
             <h6>Categoria: <%=prodotto.getCategoria() %></h6>
         </div>
     </div>
-    
-    <div class="addToCart">
-            <h3>Disponibilità: <%= prodotto.getDisponibilita() %></h3>
-	        <label for="quantity">Quantità: </label>
-	        <input type="number" id="quantity" name="quantity" min="1" max="99" value="1">
-	        <button class="addToCartButton" data-product-id="<%= prodotto.getId() %>">Aggiungi al Carrello</button>
+
+	<div class="addToCart">
+		<form action="${pageContext.request.contextPath}/aggiungi-al-carrello-servlet" method="POST">
+			<h3>Disponibilità: <%= prodotto.getDisponibilita() %></h3>
+			<label for="quantity">Quantità: </label>
+			<input type="number" id="quantity" name="quantity" min="1" max="99" value="1">
+			<input type="hidden" name="productId" value="<%= prodotto.getId() %>">
+			<button type="submit" class="addToCartButton">Aggiungi al Carrello</button>
+		</form>
 	</div>
-	
+
 	<div class="reviewOrModify">
 		<% utenteBean user = (utenteBean) session.getAttribute("user");
 		if (session.getAttribute("user") != null) {
