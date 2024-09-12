@@ -110,7 +110,7 @@
         <div id="product-specs" class="product-specs">
             <h2>Dettagli prodotto</h2>
             <h5>Prezzo: <%=prodotto.getPrezzo()%>€</h5>
-            <h6>Categoria: Strumenti</h6>
+            <h6>Categoria: <%=prodotto.getCategoria() %></h6>
         </div>
     </div>
     

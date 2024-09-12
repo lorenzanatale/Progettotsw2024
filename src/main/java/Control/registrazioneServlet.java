@@ -27,6 +27,11 @@ public class registrazioneServlet extends HttpServlet {
 			response.sendRedirect("registrazione.jsp?error=error");
 			return;
 		}
+		
+		if (!Sicurezza.usernameValido(username)) {
+			response.sendRedirect("registrazione.jsp?error=error");
+			return;
+		}
 
 		try {
 			if (utenteRegistrato(username, email, password)) {
@@ -49,6 +54,8 @@ public class registrazioneServlet extends HttpServlet {
 		if (hashedPassword.isEmpty()) {
 			System.out.println("Password non valida");
 			return false;
+		} else if (Sicurezza.verifyPassword(password, hashedPassword.get())) {
+			System.out.println("Password verificata");
 		}
 
 		utente.setUsername(username);

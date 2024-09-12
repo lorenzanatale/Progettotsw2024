@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -44,6 +44,7 @@
         <p>Hai già un account? <a href="login.jsp">Accedi</a></p>
     </div>
 
+	<%@ include file="footer.jsp" %>
 
 		<%
 		if (session.getAttribute("emailExists") != null && (boolean) session.getAttribute("emailExists")) {
@@ -66,6 +67,7 @@
         <img src="icon/arrow.png" id="arrow">
     </a>
 </div>
+
 
 <script src="scripts/registrazione.js"></script>
 </body>

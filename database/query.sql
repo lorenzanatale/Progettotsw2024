@@ -16,18 +16,18 @@ INSERT INTO Ordine (idUtente, infoConsegna) VALUES
 (3, 3);
 
 INSERT INTO Prodotto (nome, descrizione, categoria, prezzo, IVA, visibile, disponibilità, imgPath) VALUES
-('Chitarra Acustica', 'Chitarra acustica in legno', 'Strumenti', 99.99, '22', 1, 50, 'img/prodotti/chitarra.jpg'),
-('Batteria Elettronica', 'Batteria elettronica con suoni campionati', 'Strumenti', 749.99, '22', 1, 15, 'img/prodotti/batteria.jpg'),
-('Violino', 'Violino in legno massello con finitura lucida', 'Strumenti', 349.99, '22', 1, 30, 'img/prodotti/violino.jpg'),
-('Saxofono', 'Saxofono in ottone con custodia inclusa', 'Strumenti', 499.99, '22', 1, 25, 'img/prodotti/saxofono.jpg'),
-('Basso Elettrico', 'Basso elettrico a 4 corde con equalizzatore attivo', 'Strumenti', 599.99, '22', 1, 30, 'img/prodotti/basso.jpg'),
-('Microfono USB', 'Microfono USB professionale', 'Attrezzatura', 149.99, '22', 1, 100, 'img/prodotti/microfono.jpg'),
-('Amplificatore per Chitarra', 'Amplificatore per chitarra da 50W con effetti integrati', 'Attrezzatura', 299.99, '22', 1, 25, 'img/prodotti/amplificatore.jpg'),
-('Cuffie da Studio', 'Cuffie da studio professionali con isolamento acustico', 'Attrezzatura', 129.99, '22', 1, 75, 'img/prodotti/cuffie.jpg'),
-('Cavo Jack 6.3mm', 'Cavo per strumenti musicali da 6.3mm, lungo 3 metri', 'Attrezzatura', 19.99, '22', 1, 200, 'img/prodotti/cavo.jpg'),
-('Plettro in Nylon', 'Set di 12 plettri in nylon di diverse misure', 'Attrezzatura', 9.99, '22', 1, 500, 'img/prodotti/plettro.jpg'),
-('Software di Editing Video', 'Software avanzato per l\'editing video con supporto 4K e effetti speciali', 'Software', 299.99, '22', 1, 100, 'img/prodotti/softwarepr.png'),
-('Software Produzione Audio', 'Software per la produzione musicale', 'Software', 199.99, '22', 1, 200, 'img/prodotti/softwaregb.png');
+('Chitarra Acustica', 'Chitarra acustica in legno', 'Strumenti', 99.00, '22', 1, 50, 'img/prodotti/chitarra.jpg'),
+('Batteria Elettronica', 'Batteria elettronica con suoni campionati', 'Strumenti', 749.00, '22', 1, 15, 'img/prodotti/batteria.jpg'),
+('Violino', 'Violino in legno massello con finitura lucida', 'Strumenti', 349.00, '22', 1, 30, 'img/prodotti/violino.jpg'),
+('Saxofono', 'Saxofono in ottone con custodia inclusa', 'Strumenti', 499.00, '22', 1, 25, 'img/prodotti/saxofono.jpg'),
+('Basso Elettrico', 'Basso elettrico a 4 corde con equalizzatore attivo', 'Strumenti', 599.00, '22', 1, 30, 'img/prodotti/basso.jpg'),
+('Microfono USB', 'Microfono USB professionale', 'Attrezzatura', 149.00, '22', 1, 100, 'img/prodotti/microfono.jpg'),
+('Amplificatore per Chitarra', 'Amplificatore per chitarra da 50W con effetti integrati', 'Attrezzatura', 299.00, '22', 1, 25, 'img/prodotti/amplificatore.jpg'),
+('Cuffie da Studio', 'Cuffie da studio professionali con isolamento acustico', 'Attrezzatura', 129.00, '22', 1, 75, 'img/prodotti/cuffie.jpg'),
+('Cavo Jack 6.3mm', 'Cavo per strumenti musicali da 6.3mm, lungo 3 metri', 'Attrezzatura', 19.00, '22', 1, 200, 'img/prodotti/cavo.jpg'),
+('Plettro in Nylon', 'Set di 12 plettri in nylon di diverse misure', 'Attrezzatura', 9.00, '22', 1, 500, 'img/prodotti/plettro.jpg'),
+('Software di Editing Video', 'Software avanzato per l\'editing video con supporto 4K e effetti speciali', 'Software', 299.00, '22', 1, 100, 'img/prodotti/softwarepr.png'),
+('Software Produzione Audio', 'Software per la produzione musicale', 'Software', 199.00, '22', 1, 200, 'img/prodotti/softwaregb.png');
 
 INSERT INTO Carrello (IdUtente) VALUES
 (1),
@@ -35,12 +35,12 @@ INSERT INTO Carrello (IdUtente) VALUES
 (3);
 
 INSERT INTO ProdottoOrdine (nome, idProdotto, IdOrdine, quantità, prezzo, IVA) VALUES
-('Chitarra Acustica', 1, 1, 1, 99.99, '22'),
-('Microfono USB', 6, 2, 2, 149.99, '22'),
-('Software Produzione Audio', 12, 3, 1, 199.99, '22'),
-('Cuffie da Studio', 8, 1, 2, 129.99, '22'),
-('Amplificatore per Chitarra', 7, 2, 1, 299.99, '22'),
-('Batteria Elettronica', 2, 3, 1, 749.99, '22');
+('Chitarra Acustica', 1, 1, 1, 99.00, '22'),
+('Microfono USB', 6, 2, 2, 149.00, '22'),
+('Software Produzione Audio', 12, 3, 1, 199.00, '22'),
+('Cuffie da Studio', 8, 1, 2, 129.00, '22'),
+('Amplificatore per Chitarra', 7, 2, 1, 299.00, '22'),
+('Batteria Elettronica', 2, 3, 1, 749.00, '22');
 
 INSERT INTO ProdottoCarrello (idProdotto, IdCarrello, quantita, nome) VALUES
 (11, 1, 1, "Software di Editing Video"),
