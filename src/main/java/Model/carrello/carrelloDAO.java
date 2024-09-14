@@ -1,12 +1,8 @@
 package Model.carrello;
-
 import tswProj.EmptyPoolException;
 import tswProj.RuntimeSQLException;
 import Model.abstractDAO;
 import Model.interfacciaDAO;
-import Model.prodottoCarrello.prodottoCarrelloBean;
-import Model.prodotto.prodottoBean;
-import Model.prodotto.prodottoDAO;
 
 import java.sql.*;
 import java.util.*;
@@ -15,6 +11,18 @@ public class carrelloDAO extends abstractDAO implements interfacciaDAO<carrelloB
 	public carrelloDAO() throws EmptyPoolException {
 		super();
 	}
+	public long doRetriveByUserId(long id) throws SQLException {
+		String query = "select * from carrello where IdUtente= ?";
+		try(PreparedStatement statement = connection.prepareStatement(query)){
+			statement.setLong(1, id);
+			try (ResultSet resultSet = statement.executeQuery()) {
+				if (resultSet.next()) {
+					return resultSet.getLong("IdUtente");
+				}
+			}
+		}
+        return 0;
+    }
 	
 	@Override
 	public carrelloBean doRetrieveByKey(long id) throws SQLException {

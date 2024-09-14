@@ -90,7 +90,7 @@ public class ordineDAO extends abstractDAO implements interfacciaDAO<ordineBean,
     }
     
     public boolean hasUserPurchasedProduct(long userId, long productId) throws SQLException {
-        String query = "SELECT COUNT(*) FROM Ordine JOIN OrderItem ON Ordine.id = OrderItem.IdOrdine WHERE Ordine.idUtente = ? AND OrderItem.idProdotto = ?";
+        String query = "SELECT COUNT(*) FROM Ordine JOIN prodottoordine ON  Ordine.id = prodottoordine.IdOrdine WHERE Ordine.idUtente = ? AND prodottoordine.idProdotto = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, userId);
             statement.setLong(2, productId);

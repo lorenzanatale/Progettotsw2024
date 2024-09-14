@@ -1,9 +1,11 @@
 package Model.ordine;
 
+import Model.prodottoOrdine.prodottoOrdineBean;
+
 import java.io.Serializable;
 import java.sql.Date;
 
-public class ordineBean implements Serializable {
+public class ordineBean extends prodottoOrdineBean implements Serializable {
 	private long id;
 	private Date data;
 	private long idUtente;

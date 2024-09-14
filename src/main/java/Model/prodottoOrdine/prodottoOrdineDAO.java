@@ -1,6 +1,5 @@
 package Model.prodottoOrdine;
 
-import tswProj.EmptyPoolException;
 import Model.abstractDAO;
 import Model.interfacciaDAO;
 import java.sql.*;

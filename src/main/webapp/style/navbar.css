@@ -74,6 +74,14 @@
 .dropdown-menu {
 	padding: 0 !important;
 }
+#cart-icon {
+	width: 20px;  /* Riduce la larghezza dell'icona */
+	height: 20px; /* Riduce l'altezza dell'icona */
+	margin-left: 15px;
+	margin-top: 5px;  /* Aggiunge un po' di margine superiore per l'allineamento */
+}
+
+
 
 @media (min-width: 992px) {
 	#dropdown-menu {

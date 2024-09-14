@@ -2,13 +2,11 @@ package Model.utente;
 
 import tswProj.EmailAlreadyUsedException;
 import tswProj.EmptyPoolException;
-import tswProj.RuntimeSQLException;
 import Model.abstractDAO;
 import Model.interfacciaDAO;
 import Model.carrello.carrelloBean;
 import Model.carrello.carrelloDAO;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;

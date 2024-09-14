@@ -51,14 +51,16 @@ public class registrazioneServlet extends HttpServlet {
 		utenteBean utente = new utenteBean();
 
 		Optional<String> hashedPassword = Sicurezza.hashPassword(password);
-		if (hashedPassword.isEmpty()) {
-			System.out.println("Password non valida");
-			return false;
-		} else if (Sicurezza.verifyPassword(password, hashedPassword.get())) {
-			System.out.println("Password verificata");
-		}
+        if (hashedPassword.isPresent()) {
+            if (Sicurezza.verifyPassword(password, hashedPassword.get())) {
+                System.out.println("Password verificata");
+            }
+        } else {
+            System.out.println("Password non valida");
+            return false;
+        }
 
-		utente.setUsername(username);
+        utente.setUsername(username);
 		utente.setEmail(email);
 		utente.setPassword(hashedPassword.get());
 		utente.setIsAdmin(false);
