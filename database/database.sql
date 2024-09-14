@@ -72,7 +72,7 @@ CREATE TABLE ProdottoOrdine (
     nome VARCHAR(255) NOT NULL,
     idProdotto BIGINT UNSIGNED NOT NULL,
     IdOrdine   BIGINT UNSIGNED NOT NULL,
-    quantità INT NOT NULL,
+    Quantita INT NOT NULL,
     prezzo DECIMAL(10, 2) NOT NULL,
 	IVA ENUM('4', '10', '22') NOT NULL,
     PRIMARY KEY (id, idProdotto, IdOrdine),

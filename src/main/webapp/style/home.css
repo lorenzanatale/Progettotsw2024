@@ -4,28 +4,19 @@ body {
     background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat !important;
 }
 
-.feature-box img {
-  max-height: 500px !important;
-  object-fit: contain !important;
-  aspect-ratio: 1 !important;
+img.imgBenvenuto {
+	width: 65%;
+  	transform: translateX(25%);
+  	border-radius: 83px;
+  	padding-top: 15px;
 }
 
-.feature-box {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease;
-  background-color: #f8f8f8 !important;
-  transition: transform 0.3s !important;
-  margin: 12px !important;
-}
-
-.feature-box:hover {
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
-	transform: scale(1.1) !important;
-}
-
-h2 {
-	margin-bottom: 15px !important;
+h2.mayLike {
+	font-style: italic;
+  	margin-top: 45px;
+  	margin-left: 15px;
+  	text-align: center;
+ 	font-weight: bold;
+ 	font-size: 45px;
+  	margin-top: 75px;
 }

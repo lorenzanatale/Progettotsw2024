@@ -117,7 +117,7 @@
     <div class="addToCart">
             <h3>Disponibilità: <%= prodotto.getDisponibilita() %></h3>
 	        <label for="quantity">Quantità: </label>
-	        <input type="number" id="quantity" name="quantity" min="1" max="99" value="1">
+	        <input type="number" id="quantity" name="quantity" min="1" max="<%= prodotto.getDisponibilita() %>" value="1">
 	        <button class="addToCartButton" data-product-id="<%= prodotto.getId() %>">Aggiungi al Carrello</button>
 	</div>
 	

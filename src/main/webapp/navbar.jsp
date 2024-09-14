@@ -26,10 +26,60 @@
 	                    <a class="nav-link" href="${pageContext.request.contextPath}/catalogoServlet">Prodotti</a>
 	                </li>
 	            </ul>
+	            <div class="ricerca">
 		            <form class="d-flex" role="search">
-		                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+		                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onkeyup="searchFunction(this.value)">
 		                <button class="btn btn-outline-success">Search</button>
-		            </form>  
+		            </form>
+		            <div id="searchResults" class="search-results"></div>  
+		        </div>
+		            
+		            <script>
+					var results = []; // Variabile globale per memorizzare i risultati della ricerca
+					
+					function searchFunction(query) {
+					    if (query.length === 0) {
+					        document.getElementById('searchResults').innerHTML = "";
+					        document.getElementById('searchResults').classList.remove("show");
+					        return;
+					    }
+					
+					    var xhr = new XMLHttpRequest();
+					    xhr.onreadystatechange = function() {
+					        if (this.readyState == 4 && this.status == 200) {
+					            results = JSON.parse(this.responseText); // Memorizza i risultati nella variabile globale
+					            var html = "";
+					
+					            // Se i risultati sono più di 0, li mostro, altrimenti nascondo la lista
+					            if (results.length > 0) {
+					                html = "<ul>";
+					                for (var i = 0; i < results.length; i++) {
+					                    html += "<li><a href='prodottoServlet?id=" + results[i].id + "'>" + results[i].nome + "</a></li>";
+					                }
+					                html += "</ul>";
+					                document.getElementById('searchResults').innerHTML = html;
+					                document.getElementById('searchResults').classList.add("show");
+					            } else {
+					                // Nessun risultato, nascondo la lista
+					                document.getElementById('searchResults').innerHTML = "";
+					                document.getElementById('searchResults').classList.remove("show");
+					            }
+					        }
+					    };
+					    xhr.open("GET", "searchServlet?query=" + encodeURIComponent(query), true);
+					    xhr.send();
+					}
+					
+					// Aggiungi un event listener al pulsante "Search"
+					document.querySelector('.btn-outline-success').addEventListener('click', function(event) {
+					    event.preventDefault(); // Previene il comportamento di default del pulsante
+					    if (results.length > 0) {
+					        // Reindirizza al primo risultato
+					        window.location.href = 'prodottoServlet?id=' + results[0].id;
+					    }
+					});
+		            </script>
+		            
 	           	<a href="#" class="navbar-profile" id="profile-link">
 	        		<img src="icon/profile.png" id="profile">
 	        		<div id="dropdown-menu" class="dropdown-menu" aria-labelledby="profile-link" style="display: none;">

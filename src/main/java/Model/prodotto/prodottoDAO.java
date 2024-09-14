@@ -172,5 +172,29 @@ public class prodottoDAO extends abstractDAO implements interfacciaDAO<prodottoB
 	            statement.executeUpdate();
 	        }
 	    }
+	    
+		public List<prodottoBean> doRetrieveByNome(String nome) throws SQLException {
+	    try (PreparedStatement ps = connection.prepareStatement("SELECT * FROM Prodotto WHERE nome LIKE ?")) {
+	        ps.setString(1, "%" + nome + "%");
+	        ResultSet rs = ps.executeQuery();
+	        List<prodottoBean> prodotti = new ArrayList<>();
+	        while (rs.next()) {
+	        	prodottoBean temp = new prodottoBean();
+	        	
+	        	temp.setId(rs.getLong("id"));
+	        	temp.setNome(rs.getString("nome"));
+	        	temp.setDisponibilita(rs.getInt("disponibilita"));
+	        	temp.setCategoria(rs.getString("categoria"));
+	        	temp.setIva(rs.getString("iva"));
+	        	temp.setPrezzo(rs.getDouble("prezzo"));
+	        	temp.setImgPath(rs.getString("imgPath"));
+	        	temp.setDescrizione(rs.getString("descrizione"));
+	        	temp.setVisibile(rs.getBoolean("visibile"));
+	        	
+	            prodotti.add(temp);
+	        }
+	        return prodotti;
+	    }
+	}
 	
 }

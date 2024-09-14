@@ -6,12 +6,6 @@
     margin-left: -25px;
 }
 
-.btn-outline-success {
-	color: #000000 !important;
-	background-color: transparent !important;
-	border-color: #8080ff!important;
-}
-
 .navbar-nav .nav-link {
 	color: #000000!important;
 }
@@ -31,10 +25,6 @@
     height: auto;
     opacity: 0.3;
     margin-left: -10px;
-}
-
-.form-control {
-	width: 30% !important;;
 }
 
 #profile-link {
@@ -73,6 +63,90 @@
 
 .dropdown-menu {
 	padding: 0 !important;
+}
+
+.form-control {
+    width: 100% !important;
+    border: 2px solid #8080ff;
+    border-radius: 25px;
+    padding-left: 15px;
+}
+
+.btn-outline-success {
+	color: #000000 !important;
+	background-color: transparent !important;
+	border-color: #8080ff!important;
+    border-radius: 25px;
+    padding: 8px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-outline-success:hover {
+	color: #000000 !important;
+	background-color: rgba(50, 50, 50, 0.2);
+	
+}
+
+#searchResults {
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    position: absolute;
+    width: 30%;
+    z-index: 1000;
+    display: none;
+}
+
+#searchResults ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#searchResults li {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#searchResults li:last-child {
+    border-bottom: none;
+}
+
+#searchResults li:hover {
+    background-color: rgba(128, 128, 255, 0.1);
+}
+
+#searchResults a {
+    text-decoration: none;
+    color: #000;
+}
+
+#searchResults a:hover {
+    color: #8080ff;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#searchResults.show {
+    display: block;
+    max-width: 281px;
+    max-height: 9em;
+	overflow-y: scroll;
+}
+
+.d-flex {
+  width: 360px;
 }
 
 @media (min-width: 992px) {
