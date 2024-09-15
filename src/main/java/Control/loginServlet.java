@@ -1,8 +1,5 @@
 package Control;
 
-import Model.carrello.carrelloDAO;
-import Model.prodottoCarrello.prodottoCarrelloBean;
-import Model.prodottoCarrello.prodottoCarrelloDAO;
 import Model.utente.utenteBean;
 import Model.utente.utenteDAO;
 import tswProj.Sicurezza;
@@ -15,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
@@ -48,53 +43,16 @@ public class loginServlet extends HttpServlet {
 		session.setAttribute("id", user.getId());
 		session.setAttribute("isAdmin", user.getIsAdmin());
 
-		try (carrelloDAO carrelloDAO = new carrelloDAO();
-			 prodottoCarrelloDAO prodottoCarrelloDAO = new prodottoCarrelloDAO()) {
+		// Visualizza gli articoli del carrello dell'utente, se presenti
+		session.setAttribute("userCartId", user.getId()); // Presumendo che il carrello dell'utente sia identificato dal suo ID
 
-			// Recupera o crea il carrello dell'utente
-			long userCartId = carrelloDAO.doRetriveByUserId(user.getId());
-			session.setAttribute("userCartId", userCartId);
-
-			// Recupera il carrello anonimo dalla sessione
-			CarrelloAnonimo carrelloAnonimo = (CarrelloAnonimo) session.getAttribute("cartAnonimo");
-
-			if (carrelloAnonimo != null) {
-				// Unisci i carrelli
-				mergeCarts(carrelloAnonimo, userCartId, prodottoCarrelloDAO);
-				// Rimuovi il carrello anonimo dalla sessione
-				session.removeAttribute("cartAnonimo");
-			}
-		} catch (SQLException e) {
-			throw new RuntimeException("Errore durante la gestione dei carrelli", e);
-		}
+		// Se necessario, puoi aggiungere qui ulteriori logiche per caricare il carrello dell'utente
+		// e passarlo alla sessione per la visualizzazione
 
 		response.sendRedirect(request.getContextPath() + "/home.jsp");
 	}
 
 	private boolean checkLogin(utenteBean user, String password) {
 		return Sicurezza.verifyPassword(password, user.getPassword());
-	}
-
-	private void mergeCarts(CarrelloAnonimo carrelloAnonimo, long userCartId, prodottoCarrelloDAO prodottoCarrelloDAO) throws SQLException {
-		// Crea una copia della lista per l'iterazione
-		List<prodottoCarrelloBean> anonymousCartItems = new ArrayList<>(carrelloAnonimo.getListaCarrello());
-
-		for (prodottoCarrelloBean item : anonymousCartItems) {
-			prodottoCarrelloBean existingItem = prodottoCarrelloDAO.getProductFromCart(userCartId, item.getIdProdotto());
-
-			if (existingItem != null) {
-				// Aggiorna la quantità esistente
-				int newQuantity = existingItem.getQuantita() + item.getQuantita();
-				prodottoCarrelloDAO.updateProductQuantity(userCartId, item.getIdProdotto(), newQuantity);
-			} else {
-				// Aggiungi il prodotto al carrello dell'utente
-				prodottoCarrelloDAO.addProduct(item.getIdProdotto(), userCartId, item.getQuantita(), item.getNome());
-			}
-		}
-
-		// Ora rimuovi tutti i prodotti dal carrello anonimo
-		for (prodottoCarrelloBean item : anonymousCartItems) {
-			carrelloAnonimo.removeProduct(item);
-		}
 	}
 }

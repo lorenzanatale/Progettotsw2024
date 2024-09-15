@@ -115,13 +115,15 @@
     </div>
 
 	<div class="addToCart">
-		<form action="${pageContext.request.contextPath}/aggiungi-al-carrello-servlet" method="POST">
+		<form action="${pageContext.request.contextPath}//AggiungialcarrelloServlet" method="post">
 			<h3>Disponibilità: <%= prodotto.getDisponibilita() %></h3>
 			<label for="quantity">Quantità: </label>
 			<input type="number" id="quantity" name="quantity" min="1" max="99" value="1">
 			<input type="hidden" name="productId" value="<%= prodotto.getId() %>">
 			<input type="hidden" name="nome" value="<%= prodotto.getNome() %>">
-			<input type="hidden" name="nome" value="<%=prodotto.getImgPath()%>">
+			<input type="hidden" name="ImgPath" value="<%=prodotto.getImgPath()%>">
+			<input type="hidden" name="prezzo" value="<%=prodotto.getPrezzo()%>">
+			<input type="hidden" name="totale" value="<%=prodotto.getPrezzoConIva()%>">
 			<button type="submit" class="addToCartButton">Aggiungi al Carrello</button>
 		</form>
 	</div>

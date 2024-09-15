@@ -34,11 +34,13 @@ public class carrelloBean implements Serializable{
 		return "carrelloBean{" + "id=" + id + ", idUtente=" + idUtente + '}';
 	}
 
-	public List<prodottoCarrelloBean> getProdotti() {
+	public List<prodottoCarrelloBean> getProdotti(long id) {
 		return prodotti;
 	}
 
 	public void setProdotti(List<prodottoCarrelloBean> prodotti) {
 		this.prodotti = prodotti;
 	}
+
+
 }
