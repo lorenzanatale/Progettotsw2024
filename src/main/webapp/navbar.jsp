@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 	<meta charset="UTF-8">
 	<title>Navbar</title>
@@ -82,11 +80,9 @@
 		            
 		    <!-- Icona del carrello -->
 		    <div class="navbar-cart">
-				<form>
-				<a href="${pageContext.request.contextPath}/Visualcarrello-servlet" class="navbar-cart">
+				<a href="${pageContext.request.contextPath}/AggiungialcarrelloServlet" class="navbar-cart">
 					<img src="img/carrello.png" id="cart-icon" alt="Carrello">
 				</a>
-				</form>
 			</div>
 	           	<a href="#" class="navbar-profile" id="profile-link">
 	        		<img src="icon/profile.png" id="profile">

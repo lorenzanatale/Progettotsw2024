@@ -30,7 +30,7 @@ public class prodottoCarrelloDAO extends abstractDAO implements interfacciaDAO<p
     }
 
     public prodottoCarrelloBean doRetrieveByProductId(long productId, long userCartId) throws SQLException {
-        String query = "SELECT * FROM ProdottoCarrello WHERE idProdotto= ?";
+        String query = "SELECT * FROM ProdottoCarrello WHERE idProdotto= ? AND IdCarrello= ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, productId);
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -223,7 +223,7 @@ public class prodottoCarrelloDAO extends abstractDAO implements interfacciaDAO<p
     }
 
     public prodottoCarrelloBean getProductFromCart(Long cartId, Long prodottoId) throws SQLException {
-        String query = "SELECT * FROM prodottocarrello WHERE IdCarrello = ? AND idProdotto = ?";
+        String query = "SELECT * FROM Prodottocarrello WHERE IdCarrello = ? AND idProdotto = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setLong(1, cartId);
             stmt.setLong(2, prodottoId);
@@ -235,28 +235,5 @@ public class prodottoCarrelloDAO extends abstractDAO implements interfacciaDAO<p
         return null; // Se non esiste
     }
 
-    public void updateProductQuantity(Long cartId, long idProdotto, int nuovaQuantita) throws SQLException {
-        String query = "UPDATE prodottocarrello SET quantita = ? WHERE  IdCarrello = ? AND idProdotto= ?";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setInt(1, nuovaQuantita);
-            stmt.setLong(2, cartId);
-            stmt.setLong(3, idProdotto);
-            stmt.executeUpdate();
-        }
+
     }
-
-    public boolean prodottoEsisteNelCarrello(long productId, long cartId) throws SQLException {
-        String query = "SELECT COUNT(*) FROM prodottocarrello WHERE idProdotto= ? AND idcarrello = ?";
-        try (PreparedStatement ps = connection.prepareStatement(query)) {
-            ps.setLong(1, productId);
-            ps.setLong(2, cartId);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                return rs.getInt(1) > 0;
-            }
-            return false;
-
-
-        }
-    }
-}

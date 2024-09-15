@@ -11,18 +11,20 @@ public class carrelloDAO extends abstractDAO implements interfacciaDAO<carrelloB
 	public carrelloDAO() throws EmptyPoolException {
 		super();
 	}
-	public long doRetriveByUserId(long id) throws SQLException {
-		String query = "select * from carrello where IdUtente= ?";
-		try(PreparedStatement statement = connection.prepareStatement(query)){
-			statement.setLong(1, id);
+
+	public long doRetrieveByUserId(long userId) throws SQLException {
+		String query = "SELECT id FROM Carrello WHERE IdUtente = ?";
+		try (PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setLong(1, userId);
 			try (ResultSet resultSet = statement.executeQuery()) {
 				if (resultSet.next()) {
-					return resultSet.getLong("IdUtente");
+					return resultSet.getLong("id");
 				}
 			}
 		}
-        return 0;
-    }
+		throw new RuntimeSQLException("Cart not found for user ID: " + userId);
+	}
+
 	
 	@Override
 	public carrelloBean doRetrieveByKey(long id) throws SQLException {
@@ -54,10 +56,17 @@ public class carrelloDAO extends abstractDAO implements interfacciaDAO<carrelloB
 
 	@Override
 	public long doSave(carrelloBean carrello) throws SQLException {
-		String query = "INSERT INTO Carrello(idUtente) VALUES(?)";
-		long generatedKey= -1;
+		String query = "INSERT INTO Carrello (IdUtente) VALUES (?)";
+		long generatedKey = -1;
+
 		try (PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
-			statement.setLong(1, carrello.getIdUtente());
+			// Gestione del valore di IdUtente
+			if (carrello.getIdUtente() == 0) {
+				statement.setNull(1, Types.BIGINT); // Imposta il valore a NULL per carrelli anonimi
+			} else {
+				statement.setLong(1, carrello.getIdUtente());
+			}
+
 			if (statement.executeUpdate() > 0) {
 				try (ResultSet resultSet = statement.getGeneratedKeys()) {
 					if (resultSet.next()) {
@@ -68,7 +77,9 @@ public class carrelloDAO extends abstractDAO implements interfacciaDAO<carrelloB
 		}
 		return generatedKey;
 	}
-	
+
+
+
 	@Override
 	public void doUpdate(carrelloBean carrello) throws SQLException {
 		String query = "UPDATE Carrello SET idUtente=? WHERE id=?";

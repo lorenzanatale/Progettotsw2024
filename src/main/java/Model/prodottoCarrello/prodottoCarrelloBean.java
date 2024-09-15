@@ -1,20 +1,19 @@
 package Model.prodottoCarrello;
 
-import Model.prodotto.prodottoBean;
-import Model.prodotto.prodottoDAO;
-
 import java.io.Serializable;
 import java.sql.SQLException;
+import Model.prodotto.prodottoDAO;
+import Model.prodotto.prodottoBean;
 
 public class prodottoCarrelloBean implements Serializable {
 
 	private long id;
 	private long idProdotto;
 	private long idCarrello;
-	private static int quantita;
+	private int quantita;
 	private String nome;
-	private prodottoBean prodottoBean;
 	private String imgPath;
+	private Double prezzo;
 
 	public prodottoCarrelloBean() {}
 
@@ -32,25 +31,20 @@ public class prodottoCarrelloBean implements Serializable {
 
 	public void setIdProdotto(long idProdotto) {
 		this.idProdotto = idProdotto;
-
+		// Recupera e imposta le informazioni del prodotto
 		try (prodottoDAO prodDAO = new prodottoDAO()) {
-			this.prodottoBean = prodDAO.doRetrieveByKey(idProdotto);
-			if (this.prodottoBean == null) {
-				System.out.println("Nessun prodotto trovato con ID: " + idProdotto);
+			prodottoBean prodotto = prodDAO.doRetrieveByKey(idProdotto);
+			if (prodotto != null) {
+				this.nome = prodotto.getNome();
+				this.imgPath = prodotto.getImgPath();
+				this.prezzo = prodotto.getPrezzo(); // Assumi che prodottoBean abbia un metodo getPrezzo()
 			} else {
-				System.out.println("Prodotto trovato: " + prodottoBean.getNome());
-				this.nome = prodottoBean.getNome(); // Assicurati di inizializzare il nome
-				this.imgPath = prodottoBean.getImgPath(); // Assicurati di inizializzare l'immagine
+				System.out.println("Nessun prodotto trovato con ID: " + idProdotto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException("Errore durante il recupero del prodotto: " + e.getMessage(), e);
 		}
-
-	}
-
-	public prodottoBean getProdottoBean() {
-		return prodottoBean;
 	}
 
 	public long getIdCarrello() {
@@ -61,7 +55,7 @@ public class prodottoCarrelloBean implements Serializable {
 		this.idCarrello = idCarrello;
 	}
 
-	public static int getQuantita() {
+	public int getQuantita() {
 		return quantita;
 	}
 
@@ -85,8 +79,24 @@ public class prodottoCarrelloBean implements Serializable {
 		this.imgPath = imgPath;
 	}
 
+	public double getPrezzo() {
+		return prezzo != null ? prezzo : 0.0; // Gestisce il caso in cui prezzo è null
+	}
+
+	public void setPrezzo(double prezzo) {
+		this.prezzo = prezzo;
+	}
+
 	@Override
 	public String toString() {
-		return "prodottoCarrelloBean{" + "id=" + id + ", idProdotto=" + idProdotto + ", idCarrello=" + idCarrello + ", quantita=" + quantita + ", nome='" + nome + "', imgPath='" + imgPath + "'}";
+		return "prodottoCarrelloBean{" +
+				"id=" + id +
+				", idProdotto=" + idProdotto +
+				", idCarrello=" + idCarrello +
+				", quantita=" + quantita +
+				", nome='" + nome + '\'' +
+				", imgPath='" + imgPath + '\'' +
+				", prezzo=" + prezzo +
+				'}';
 	}
 }

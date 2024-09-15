@@ -1,118 +1,92 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
-/* Stile di base per la pagina */
-body {
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat;
+* {
     margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat;
+    margin: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
 }
 
-/* Contenitore principale del carrello */
 main.container {
     background: white;
-    width: 90%;
-    max-width: 1200px;
+    width: auto;
     padding: 2rem;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    margin-top: 20px;
 }
 
-/* Stile per il titolo */
-main h1 {
+main h2 {
     font-weight: 600;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: #333;
+    margin-bottom: 2rem;
+    position: relative;
 }
 
-/* Stile per la tabella */
+main h2::before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 25px;
+    top: 29px;
+    left: 0;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #8e2de2, #ebe1fb);
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1rem;
+    margin-bottom: 1.5rem;
 }
-
-thead th {
-    background: linear-gradient(45deg, #8e2de2, #ebe1fb);
-    color: white;
-    padding: 0.75rem;
-    text-align: left;
-}
-
-tbody tr {
-    border-bottom: 1px solid #ddd;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-td {
-    padding: 0.75rem;
-    text-align: left;
-}
-
-img {
-    max-width: 100px;
-    height: auto;
+table img.product-image {
+    width: 100px; /* Dimensione dell'immagine */
+    height: auto; /* Mantieni le proporzioni */
     border-radius: 4px;
+    object-fit: cover;
 }
 
-/* Stile per il messaggio quando il carrello è vuoto */
-p {
+table th, table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+table th, table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+table th {
+    background: #f4f4f4;
+}
+
+table tfoot tr {
+    font-weight: 600;
+}
+
+a.checkout-button {
+    display: inline-block;
+    padding: 0.75rem;
+    background: linear-gradient(to left, #4776E6, #eee1ff);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 300;
+    border-radius: 4px;
+    text-decoration: none;
     text-align: center;
-    color: #666;
-    font-size: 1.2rem;
+    transition: background 0.3s ease;
 }
 
-/* Responsività */
-@media (max-width: 768px) {
-    main.container {
-        padding: 1rem;
-    }
-
-    table {
-        font-size: 0.9rem;
-    }
-
-    td, th {
-        padding: 0.5rem;
-    }
-
-    img {
-        max-width: 80px;
-    }
-}
-
-@media (max-width: 480px) {
-    main.container {
-        width: 95%;
-        padding: 0.5rem;
-    }
-
-    table {
-        font-size: 0.8rem;
-    }
-
-    td, th {
-        padding: 0.25rem;
-    }
-
-    img {
-        max-width: 60px;
-    }
-
-    p {
-        font-size: 1rem;
-    }
+a.checkout-button:hover {
+    background: linear-gradient(to right, #4776E6, #d6bbfb);
 }

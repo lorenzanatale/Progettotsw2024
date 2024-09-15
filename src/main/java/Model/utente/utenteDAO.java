@@ -91,32 +91,48 @@ public class utenteDAO extends abstractDAO implements interfacciaDAO<utenteBean,
     
     @Override
     public long doSave(utenteBean utente) throws SQLException, EmailAlreadyUsedException {
-    	if (emailExists(utente.getEmail())) {
-    		throw new EmailAlreadyUsedException("L'email è già utilizzata. Si prega di scegliere un'altra email.");
+        // Verifica se l'email esiste già
+        if (emailExists(utente.getEmail())) {
+            throw new EmailAlreadyUsedException("L'email è già utilizzata. Si prega di scegliere un'altra email.");
         }
+
         String query = "INSERT INTO Utente (username, email, isAdmin, password) VALUES (?, ?, ?, ?)";
-        long generatedKey = -1;
+        long generatedKey = -1; // Variabile per tenere traccia della chiave generata
+
+        // Usare try-with-resources per garantire la chiusura delle risorse JDBC
         try (PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            // Imposta i parametri della query
             statement.setString(1, utente.getUsername());
             statement.setString(2, utente.getEmail());
             statement.setBoolean(3, utente.getIsAdmin());
             statement.setString(4, utente.getPassword());
-            if (statement.executeUpdate() > 0){
+
+            // Esegui l'operazione di inserimento e ottieni la chiave generata
+            if (statement.executeUpdate() > 0) {
                 try (ResultSet rs = statement.getGeneratedKeys()) {
-                	if (rs.next()){
-                		generatedKey = rs.getInt(1);
-                		carrelloBean carrello = new carrelloBean();
-                		carrello.setIdUtente(generatedKey);
-                		try(carrelloDAO carrelloDAO = new carrelloDAO()) {
-                			carrelloDAO.doSave(carrello);
-                		}
-                	}
+                    if (rs.next()) {
+                        generatedKey = rs.getLong(1); // Ottieni la chiave primaria generata per l'utente
+
+                        // Creare un nuovo carrello associato a questo utente
+                        carrelloBean carrello = new carrelloBean();
+                        carrello.setIdUtente(generatedKey);
+
+                        // Salva il carrello nel database
+                        try (carrelloDAO carrelloDAO = new carrelloDAO()) {
+                            carrelloDAO.doSave(carrello);
+                        } catch (SQLException e) {
+                            throw new SQLException("Errore nel salvataggio del carrello", e);
+                        }
+                    }
                 }
             }
+        } catch (SQLException e) {
+            throw new SQLException("Errore durante il salvataggio dell'utente", e);
         }
+
         return generatedKey;
     }
-    
+
     @Override
     public void doUpdate(utenteBean utente) throws SQLException {
         String query = "UPDATE Utente SET username = ?, email = ?, isAdmin = ?, password = ? WHERE id = ?";
