@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Navbar</title>
-<link href="style/navbar.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="scripts/searchbar.js"></script>
+	<meta charset="UTF-8">
+	<title>Navbar</title>
+	<link href="style/navbar.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="scripts/searchbar.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -80,6 +80,14 @@
 					});
 		            </script>
 		            
+		    <!-- Icona del carrello -->
+		    <div class="navbar-cart">
+				<form>
+				<a href="${pageContext.request.contextPath}/Visualcarrello-servlet" class="navbar-cart">
+					<img src="img/carrello.png" id="cart-icon" alt="Carrello">
+				</a>
+				</form>
+			</div>
 	           	<a href="#" class="navbar-profile" id="profile-link">
 	        		<img src="icon/profile.png" id="profile">
 	        		<div id="dropdown-menu" class="dropdown-menu" aria-labelledby="profile-link" style="display: none;">
@@ -97,8 +105,8 @@
 	    	</div>    		
 	    </div>
 	</nav>
-	
-	<script src="scripts/navbar.js"></script>
-	
+
+<script src="scripts/navbar.js"></script>
+
 </body>
 </html>

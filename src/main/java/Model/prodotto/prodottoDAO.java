@@ -13,7 +13,7 @@ public class prodottoDAO extends abstractDAO implements interfacciaDAO<prodottoB
 	public prodottoDAO() throws EmptyPoolException {
 		super();
 	}
-	
+
 	@Override
 	public prodottoBean doRetrieveByKey(long id) throws SQLException {
 		String query = "SELECT * FROM Prodotto WHERE id = ?";
@@ -27,7 +27,6 @@ public class prodottoDAO extends abstractDAO implements interfacciaDAO<prodottoB
 		}
 		return null;
 	}
-	
 	 public Map<prodottoBean, Integer> doRetrieveByKeys(Map<Long, Integer> productsWithQuantity) throws SQLException {
 	        Map<prodottoBean, Integer> prodottoBeans = new HashMap<>();
 	        for (Map.Entry<Long, Integer> entry : productsWithQuantity.entrySet()) {
@@ -157,7 +156,7 @@ public class prodottoDAO extends abstractDAO implements interfacciaDAO<prodottoB
 	        prodotto.setDisponibilita(resultSet.getInt("Disponibilità"));
 	        prodotto.setCategoria(resultSet.getString("Categoria"));
 	        prodotto.setIva(resultSet.getString("IVA"));
-	        prodotto.setPrezzo(resultSet.getLong("Prezzo"));
+	        prodotto.setPrezzo(resultSet.getDouble("Prezzo"));
 	        prodotto.setImgPath(resultSet.getString("imgPath"));
 	        prodotto.setDescrizione(resultSet.getString("descrizione"));
 	        prodotto.setVisibile(resultSet.getInt("visibile") == 1);

@@ -1,11 +1,15 @@
 package Model.carrello;
 
+import Model.prodottoCarrello.prodottoCarrelloBean;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class carrelloBean implements Serializable{
 	
 	private long id;
 	private long idUtente;
+	private List<prodottoCarrelloBean> prodotti;
 	
 	public carrelloBean() {}
 	
@@ -28,5 +32,13 @@ public class carrelloBean implements Serializable{
 	@Override
 	public String toString() {
 		return "carrelloBean{" + "id=" + id + ", idUtente=" + idUtente + '}';
+	}
+
+	public List<prodottoCarrelloBean> getProdotti() {
+		return prodotti;
+	}
+
+	public void setProdotti(List<prodottoCarrelloBean> prodotti) {
+		this.prodotti = prodotti;
 	}
 }

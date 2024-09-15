@@ -2,20 +2,18 @@ package Model.utente;
 
 import tswProj.EmailAlreadyUsedException;
 import tswProj.EmptyPoolException;
-import tswProj.RuntimeSQLException;
 import Model.abstractDAO;
 import Model.interfacciaDAO;
 import Model.carrello.carrelloBean;
 import Model.carrello.carrelloDAO;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.catalina.connector.Response;
+
 
 public class utenteDAO extends abstractDAO implements interfacciaDAO<utenteBean, Long> {
     public utenteDAO() throws EmptyPoolException {
