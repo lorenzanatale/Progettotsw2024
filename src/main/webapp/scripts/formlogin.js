@@ -4,10 +4,12 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 
     if(email == '' || password == '') {
         Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
             icon: 'error',
-            title: 'Ops...',
             text: 'Per favore, riempi tutti i campi.',
-            width: '400px'
         });
         event.preventDefault();
     }

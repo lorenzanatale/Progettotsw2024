@@ -39,6 +39,22 @@
     <%@ include file="footer.jsp" %>
 	<script src="scripts/formlogin.js"></script>
        
+    <script>
+	window.onload = function() {
+	    var url = window.location.href;
+	    if (url.indexOf('error') != -1) {
+	        Swal.fire({
+	            toast: true,
+	            position: 'top-end',
+	            showConfirmButton: false,
+	            timer: 3000,
+	            icon: 'error',
+	            text: 'Le credenziali inserite sono errate. Riprova.',
+	        });
+	    }
+	};
+    </script>
+    
 </main>
 </body>
 </html>

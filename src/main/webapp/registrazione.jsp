@@ -51,10 +51,13 @@
 			session.removeAttribute("emailExists"); // Rimuovi l'attributo dopo averlo utilizzato
 		%>
 		<script>
-			Swal.fire({
-				icon : 'error',
-				title : 'Ops...',
-				text : 'L\'email inserita è già utilizzata!'
+       	 	Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            icon: 'error',
+            title: 'L\'email inserita è già utilizzata!',
 			})
 		</script>
 		<%
@@ -70,5 +73,20 @@
 
 
 <script src="scripts/registrazione.js"></script>
+<script>
+	window.onload = function() {
+		var url = window.location.href;
+		if (url.indexOf('error=2') != -1) {
+			Swal.fire({
+	            toast: true,
+	            position: 'top-end',
+	            showConfirmButton: false,
+	            timer: 3000,
+	            icon: 'error',
+	            title : 'Il nome utente inserito è troppo corto. Inserisci almeno 3 caratteri!',
+			});
+		}
+	};
+</script>
 </body>
 </html>
