@@ -7,12 +7,12 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     if (password !== confirmPassword) {
         event.preventDefault();
         Swal.fire({
-            toast: true,
+			toast: true,
             position: 'top-end',
             showConfirmButton: false,
             timer: 3000,
             icon: 'error',
-            title: 'Le password non coincidono.',
+	        title: 'Le password non coincidono. Riprova.',
         });
         return;
     }

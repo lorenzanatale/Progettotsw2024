@@ -34,7 +34,7 @@ INSERT INTO Carrello (IdUtente) VALUES
 (2),
 (3);
 
-INSERT INTO ProdottoOrdine (nome, idProdotto, IdOrdine, quantità, prezzo, IVA) VALUES
+INSERT INTO ProdottoOrdine (nome, idProdotto, IdOrdine, Quantita, prezzo, IVA) VALUES
 ('Chitarra Acustica', 1, 1, 1, 99.00, '22'),
 ('Microfono USB', 6, 2, 2, 149.00, '22'),
 ('Software Produzione Audio', 12, 3, 1, 199.00, '22'),

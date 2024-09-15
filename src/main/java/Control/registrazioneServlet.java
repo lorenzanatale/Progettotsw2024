@@ -24,12 +24,12 @@ public class registrazioneServlet extends HttpServlet {
 		String confirmPassword = request.getParameter("confirmPassword");
 
 		if (!password.equals(confirmPassword)) {
-			response.sendRedirect("registrazione.jsp?error=error");
+			response.sendRedirect("registrazione.jsp?error=1");
 			return;
 		}
 		
 		if (!Sicurezza.usernameValido(username)) {
-			response.sendRedirect("registrazione.jsp?error=error");
+			response.sendRedirect("registrazione.jsp?error=2");
 			return;
 		}
 

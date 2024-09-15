@@ -1,5 +1,22 @@
+@charset "UTF-8";
+
 body {
-    background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat;
+    background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat !important;
 }
 
+img.imgBenvenuto {
+	width: 65%;
+  	transform: translateX(25%);
+  	border-radius: 83px;
+  	padding-top: 15px;
+}
 
+h2.mayLike {
+	font-style: italic;
+  	margin-top: 45px;
+  	margin-left: 15px;
+  	text-align: center;
+ 	font-weight: bold;
+ 	font-size: 45px;
+  	margin-top: 75px;
+}

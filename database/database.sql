@@ -26,8 +26,8 @@ CREATE TABLE InfoConsegna (
 
 CREATE TABLE Carrello (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    IdUtente BIGINT UNSIGNED NOT NULL,
-    PRIMARY KEY (id, IdUtente),
+    IdUtente BIGINT UNSIGNED,
+    PRIMARY KEY (id),
     FOREIGN KEY (IdUtente) REFERENCES Utente (id) ON DELETE CASCADE
 );
 
@@ -72,7 +72,7 @@ CREATE TABLE ProdottoOrdine (
     nome VARCHAR(255) NOT NULL,
     idProdotto BIGINT UNSIGNED NOT NULL,
     IdOrdine   BIGINT UNSIGNED NOT NULL,
-    quantità INT NOT NULL,
+    Quantita INT NOT NULL,
     prezzo DECIMAL(10, 2) NOT NULL,
 	IVA ENUM('4', '10', '22') NOT NULL,
     PRIMARY KEY (id, idProdotto, IdOrdine),
