@@ -10,14 +10,15 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/logoutServlet")
-
 public class logoutServlet extends HttpServlet {
-	
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(false);
         if (session != null) {
-            session.invalidate();
+            // Rimuovi solo le informazioni dell'utente
+            session.removeAttribute("userId"); // Rimuovi ID dell'utente
+            // Non rimuovere l'ID del carrello dalla sessione
         }
         response.sendRedirect(request.getContextPath() + "/home.jsp");
     }

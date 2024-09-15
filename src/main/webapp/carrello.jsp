@@ -17,16 +17,15 @@
     <%
         Long carrelloId = (Long) session.getAttribute("carrelloId");
         if (carrelloId == null) {
-            System.out.println("<p>Il carrello è vuoto.</p>");
+            System.out.println("<p>Il carrello è vuoto. <a href='catalogo.jsp'>Continua lo shopping</a></p>");
         } else {
-            // Utilizza try-with-resources per chiudere automaticamente le DAO
             try (carrelloDAO carrelloDAO = new carrelloDAO();
                  prodottoCarrelloDAO prodottoCarrelloDAO = new prodottoCarrelloDAO()) {
 
                 List<prodottoCarrelloBean> prodotti = prodottoCarrelloDAO.getCartItemsAsProducts(carrelloId);
 
                 if (prodotti.isEmpty()) {
-                    System.out.println("<p>Il carrello è vuoto.</p>");
+                    System.out.println("<p>Il carrello è vuoto. <a href='catalogo.jsp'>Continua lo shopping</a></p>");
                 } else {
     %>
 
@@ -44,16 +43,16 @@
         <%
             double totale = 0.0;
             for (prodottoCarrelloBean prodotto : prodotti) {
-                double prezzoTotale = prodotto.getPrezzo() * prodotto.getQuantita(); // Usa getPrezzo() dal bean
+                double prezzoTotale = prodotto.getPrezzo() * prodotto.getQuantita();
                 totale += prezzoTotale;
-                String imgPath = prodotto.getImgPath(); // Aggiorna il percorso dell'immagine se necessario
+                String imgPath = prodotto.getImgPath();
         %>
         <tr>
             <td><img src="<%= imgPath %>" alt="<%= prodotto.getNome() %>" class="product-image"></td>
             <td><%= prodotto.getNome() %></td>
             <td><%= prodotto.getQuantita() %></td>
             <td><%= prodotto.getPrezzo() %> €</td>
-            <td><%= prezzoTotale %> €</td>
+            <td><%= String.format("%.2f", prezzoTotale) %> €</td>
         </tr>
         <%
             }
@@ -62,10 +61,15 @@
         <tfoot>
         <tr>
             <td colspan="4"><strong>Totale</strong></td>
-            <td><strong><%= totale %> €</strong></td>
+            <td><strong><%= String.format("%.2f", totale) %> €</strong></td>
         </tr>
         </tfoot>
     </table>
+
+    <div class="checkout-section">
+        <a href="checkout.jsp" class="checkout-button">Procedi all'ordine</a>
+        <a href="catalogoServlet" class="continue-shopping-button">Continua lo shopping</a>
+    </div>
 
     <%
                 }
@@ -75,8 +79,6 @@
             }
         }
     %>
-
-    <a href="checkout.jsp" class="checkout-button">Procedi all'ordine</a>
 </main>
 </body>
 </html>
