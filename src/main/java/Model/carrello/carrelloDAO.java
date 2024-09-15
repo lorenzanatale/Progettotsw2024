@@ -11,18 +11,20 @@ public class carrelloDAO extends abstractDAO implements interfacciaDAO<carrelloB
 	public carrelloDAO() throws EmptyPoolException {
 		super();
 	}
-	public long doRetriveByUserId(long id) throws SQLException {
-		String query = "select * from carrello where IdUtente= ?";
-		try(PreparedStatement statement = connection.prepareStatement(query)){
-			statement.setLong(1, id);
+
+	public long doRetrieveByUserId(long userId) throws SQLException {
+		String query = "SELECT id FROM Carrello WHERE IdUtente = ?";
+		try (PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setLong(1, userId);
 			try (ResultSet resultSet = statement.executeQuery()) {
 				if (resultSet.next()) {
-					return resultSet.getLong("IdUtente");
+					return resultSet.getLong("id");
 				}
 			}
 		}
-        return 0;
-    }
+		throw new RuntimeSQLException("Cart not found for user ID: " + userId);
+	}
+
 	
 	@Override
 	public carrelloBean doRetrieveByKey(long id) throws SQLException {

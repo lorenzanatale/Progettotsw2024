@@ -76,7 +76,7 @@
         }
     %>
 
-    <a href="checkout.jsp" class="checkout-button">Procedi al Checkout</a>
+    <a href="checkout.jsp" class="checkout-button">Procedi all'ordine</a>
 </main>
 </body>
 </html>

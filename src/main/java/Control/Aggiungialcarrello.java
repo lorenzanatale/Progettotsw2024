@@ -42,6 +42,8 @@ public class Aggiungialcarrello extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         long prodottoId;
         int quantita;
+        double prezzo;
+
 
         try {
             prodottoId = Long.parseLong(request.getParameter("productId"));
