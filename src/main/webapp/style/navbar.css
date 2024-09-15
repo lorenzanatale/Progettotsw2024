@@ -157,6 +157,17 @@
   width: 360px;
 }
 
+#cart-icon, #profile {
+			width: 30px; /* Imposta la stessa dimensione per entrambe le icone */
+			height: 30px;
+}
+
+.navbar-cart, .navbar-profile {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+}
+
 @media (min-width: 992px) {
 	#dropdown-menu {
 	top: 90%;
