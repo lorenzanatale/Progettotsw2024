@@ -81,7 +81,7 @@
 		    <!-- Icona del carrello -->
 		    <div class="navbar-cart">
 				<a href="${pageContext.request.contextPath}/AggiungialcarrelloServlet" class="navbar-cart">
-					<img src="img/carrello.png" id="cart-icon" alt="Carrello">
+					<img src="icon/carrello.png" id="cart-icon" alt="Carrello">
 				</a>
 			</div>
 	           	<a href="#" class="navbar-profile" id="profile-link">

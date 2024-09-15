@@ -24,7 +24,7 @@
 	width: 65px; 
     height: auto;
     opacity: 0.3;
-    margin-left: -10px;
+    margin-left: -15px;
 }
 
 #profile-link {
@@ -40,6 +40,7 @@
 	border: none;
 	border-radius: 5px;
 	padding: 5px;
+	margin-left: -10px;
 }
 
 .dropdown-divider {
@@ -67,7 +68,6 @@
 #cart-icon {
 	width: 20px;  /* Riduce la larghezza dell'icona */
 	height: 20px; /* Riduce l'altezza dell'icona */
-	margin-left: 15px;
 	margin-top: 5px;  /* Aggiunge un po' di margine superiore per l'allineamento */
 }
 
@@ -164,8 +164,6 @@
 
 .navbar-cart, .navbar-profile {
 			display: flex;
-			align-items: center;
-			justify-content: center;
 }
 
 @media (min-width: 992px) {
@@ -176,6 +174,10 @@
 	
 	.navbar-profile #profile {
     	margin-left:0;
+	}
+	
+	#cart-icon {
+		margin-left: 15px;
 	}
 	
 	.form-control {
