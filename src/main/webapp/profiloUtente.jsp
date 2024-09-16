@@ -24,8 +24,8 @@
 	<%@ include file="navbar.jsp" %>
 
 	<% boolean isAdmin = session.getAttribute("isAdmin") != null && (Boolean) session.getAttribute("isAdmin");
-	if (session.getAttribute("user") != null && isAdmin) {
-		response.sendRedirect("profiloAdmin.jsp");
+	if (session.getAttribute("user") == null || isAdmin) {
+		response.sendRedirect("home.jsp");
 	} else { %>
 	
 	<% try (utenteDAO userDAO = new utenteDAO()) {

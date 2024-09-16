@@ -19,6 +19,11 @@
 <body>
 <%@ include file="navbar.jsp" %>
 
+<% boolean isAdmin = session.getAttribute("isAdmin") != null && (Boolean) session.getAttribute("isAdmin");
+	if (session.getAttribute("user") == null || !isAdmin) {
+		response.sendRedirect("home.jsp");
+	} else {%>
+	
 <div class="content profile-container">
     <div class="menu-row">
         <button id="infoButton">Elenco utenti</button>
@@ -185,7 +190,7 @@
         </div>
     </div>
 </div>
-
+<% } %>
 <%@ include file="footer.jsp" %>
 
 <script>
