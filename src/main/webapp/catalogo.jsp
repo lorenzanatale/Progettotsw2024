@@ -14,8 +14,9 @@
 <body>
 	<%@ include file="navbar.jsp" %>
 	
-	<% boolean isAdmin = session.getAttribute("isAdmin") != null && (Boolean) session.getAttribute("isAdmin");
-	if (session.getAttribute("user") != null && isAdmin) { %>
+	<% boolean isAdmin = session.getAttribute("isAdmin") != null && (Boolean) session.getAttribute("isAdmin"); %>
+
+	<% if (session.getAttribute("user") != null && isAdmin) { %>
 	<div id="firstRow">
 		<button id="adminButton" class="adminButton">Aggiungi Prodotto</button>
 	<% } %>

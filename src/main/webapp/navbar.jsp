@@ -87,15 +87,17 @@
 	           	<a href="#" class="navbar-profile" id="profile-link">
 	        		<img src="icon/profile.png" id="profile">
 	        		<div id="dropdown-menu" class="dropdown-menu" aria-labelledby="profile-link" style="display: none;">
-	        		<% if (session != null && session.getAttribute("user") != null) { %>
-	        			<a class="dropdown-item" href="profiloUtente.jsp">Profilo</a>
-	        			<div class="dropdown-divider"></div>
-	        			<a class="dropdown-item" href="${pageContext.request.contextPath}/logoutServlet">Logout</a>
-	        		<% } else { %>
-	        		<%	if (session.getAttribute("user") == null) { %>
-            				<a class="dropdown-item" href="login.jsp">Login</a>
-            		<% } 
-            			}%>
+			<% if (session != null && session.getAttribute("user") != null) {
+			    if (session.getAttribute("isAdmin") != null && (Boolean) session.getAttribute("isAdmin")) { %>
+			        <a class="dropdown-item" href="profiloAdmin.jsp">Profilo</a>
+			    <% } else { %>
+			        <a class="dropdown-item" href="profiloUtente.jsp">Profilo</a>
+			    <% } %>
+			    <div class="dropdown-divider"></div>
+			    <a class="dropdown-item" href="${pageContext.request.contextPath}/logoutServlet">Logout</a>
+			<% } else { %>
+			    <a class="dropdown-item" href="login.jsp">Login</a>
+			<% } %>
 	    			</div>
 	    		</a>
 	    	</div>    		
