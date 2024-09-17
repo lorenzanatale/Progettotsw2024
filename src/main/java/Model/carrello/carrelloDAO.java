@@ -3,6 +3,9 @@ import tswProj.EmptyPoolException;
 import tswProj.RuntimeSQLException;
 import Model.abstractDAO;
 import Model.interfacciaDAO;
+import Model.prodotto.prodottoBean;
+import Model.prodottoCarrello.prodottoCarrelloBean;
+import Model.prodottoOrdine.prodottoOrdineBean;
 
 import java.sql.*;
 import java.util.*;
@@ -130,5 +133,14 @@ public class carrelloDAO extends abstractDAO implements interfacciaDAO<carrelloB
 				}
 			}
 		}
+		
+		public void updateDisponibilita(prodottoCarrelloBean product) throws SQLException {
+            String query = "UPDATE prodotto SET disponibilità = disponibilità - ? WHERE id = ?";
+            try (PreparedStatement statement = connection.prepareStatement(query)) {
+                statement.setInt(1, product.getQuantita());
+                statement.setLong(2, product.getIdProdotto());
+                statement.executeUpdate();
+            }
+        }
 	}
 

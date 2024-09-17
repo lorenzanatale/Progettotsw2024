@@ -84,7 +84,10 @@ public class ConfermaOrdine extends HttpServlet {
 
 
 
-            //svuotiamo il carrello
+            //Change disponibilità
+            for (prodottoCarrelloBean product : cartItems) {
+                carrelloDAO.updateDisponibilita(product);
+                }
 
 
             // Forward to the order confirmation page

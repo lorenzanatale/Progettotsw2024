@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Pagamento</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="scripts/pagamento.js"></script>
     <link rel="stylesheet" href="style/pagamento.css">
 </head>
 <body>
@@ -25,7 +27,7 @@
     </form>
 
     <br><br>
-    <a href="${pageContext.request.contextPath}/ConfermaOrdine" class="button">Conferma Ordine</a>
+    <a href="#" onclick="validateAndSubmitForm(event)" class="button">Conferma Ordine</a>
 </main>
 </body>
 </html>

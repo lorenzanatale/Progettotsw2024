@@ -28,8 +28,8 @@
          prodottoCarrelloDAO prodottoCarrelloDAO = new prodottoCarrelloDAO()) {
         if (carrelloId == null) {
 %>
-    <p>Il carrello è vuoto. <a href='<%= request.getContextPath() %>/catalogoServlet' class="continue-shopping-button">Continua
-        lo shopping</a></p>
+    <p>Il carrello è vuoto.<br></p>
+    <a href='<%= request.getContextPath() %>/catalogoServlet' class="continue-shopping-button">Continua lo shopping</a>
         <%
     } else {
         // Recupera i prodotti nel carrello
@@ -37,7 +37,7 @@
 
         if (prodotti.isEmpty()) {
 %>
-    <p>Il carrello è vuoto. <a href='<%= request.getContextPath() %>/catalogo.jsp' class="continue-shopping-button">Continua
+    <p>Il carrello è vuoto.<br> <a href='<%= request.getContextPath() %>/catalogo.jsp' class="continue-shopping-button">Continua
         lo shopping</a></p>
         <%
         } else {

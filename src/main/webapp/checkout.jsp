@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>Checkout</title>
     <link rel="stylesheet" href="style/checkout.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <main class="container">
@@ -68,8 +69,97 @@
         </section>
 
         <!-- Link to payment page -->
-        <h3><a href="pagamento.jsp" class="checkout-button">Procedi al pagamento</a></h3>
+        <h3><a href="#" onclick="validateAndSubmitForm(event)" class="checkout-button">Procedi al pagamento</a></h3>
     </form>
+    
+<script>
+function validateAndSubmitForm(event) {
+    event.preventDefault(); // Previene l'azione predefinita del click sul link
+    var nome = document.getElementById('Nome').value;
+    var cognome = document.getElementById('Cognome').value;
+    var indirizzo = document.getElementById('address').value;
+    var citta = document.getElementById('city').value;
+    var cap = document.getElementById('postalCode').value;
+
+    // Controllo del nome
+    if (nome.trim() === "") {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+            icon: 'error',
+            title: 'Inserire nome!',
+        }).then(() => {
+            location.reload(); // Ricarica la pagina corrente
+        });
+        return;
+    }
+
+    // Controllo del cognome
+    if (cognome.trim() === "") {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+            icon: 'error',
+            title: 'Inserire cognome!',
+        }).then(() => {
+            location.reload(); // Ricarica la pagina corrente
+        });
+        return;
+    }
+
+    // Controllo dell'indirizzo
+    if (indirizzo.trim() === "") {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+            icon: 'error',
+            title: 'Inserire indirizzo!',
+        }).then(() => {
+            location.reload(); // Ricarica la pagina corrente
+        });
+        return;
+    }
+
+    // Controllo della città
+    if (citta.trim() === "") {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+            icon: 'error',
+            title: 'Inserire città!',
+        }).then(() => {
+            location.reload(); // Ricarica la pagina corrente
+        });
+        return;
+    }
+
+    // Controllo del CAP
+    if (cap.length !== 5 || isNaN(cap)) {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+            icon: 'error',
+            title: 'Inserire un CAP valido di 5 cifre!',
+        }).then(() => {
+            location.reload(); // Ricarica la pagina corrente
+        });
+        return;
+    } else {
+        window.location.href = "pagamento.jsp";
+    }
+}
+    </script>
+    
 </main>
 </body>
 </html>
