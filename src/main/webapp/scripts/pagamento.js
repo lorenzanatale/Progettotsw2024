@@ -63,6 +63,6 @@ function validateAndSubmitForm(event) {
             location.reload(); // Ricarica la pagina corrente
         });
     } else {
-        window.location.href = "ConfermaOrdine.jsp"; // Redirige a ConfermaOrdine se il numero della carta è valido
+        window.location.href = "ConfermaOrdine"; // Redirige a ConfermaOrdine se il numero della carta è valido
     }
 }
