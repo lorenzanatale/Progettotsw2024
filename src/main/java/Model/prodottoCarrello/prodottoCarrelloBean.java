@@ -15,7 +15,21 @@ public class prodottoCarrelloBean implements Serializable {
 	private String imgPath;
 	private Double prezzo;
 
-	public prodottoCarrelloBean() {}
+
+	public prodottoCarrelloBean(long id, long idProdotto, long idCarrello, int quantita, String nome, String imgPath, Double prezzo) {
+		this.id = id;
+		this.idProdotto = idProdotto;
+		this.idCarrello = idCarrello;
+		this.quantita = quantita;
+		this.nome = nome;
+		this.imgPath = imgPath;
+		this.prezzo = prezzo;
+	}
+
+	public prodottoCarrelloBean() {
+
+	}
+
 
 	public long getId() {
 		return id;

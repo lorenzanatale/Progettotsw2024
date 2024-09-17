@@ -115,7 +115,7 @@
     </div>
 
 	<div class="addToCart">
-		<form action="${pageContext.request.contextPath}//AggiungialcarrelloServlet" method="post">
+		<form action="${pageContext.request.contextPath}/AggiungialcarrelloServlet" method="post">
 			<h3>Disponibilità: <%= prodotto.getDisponibilita() %></h3>
 			<label for="quantity">Quantità: </label>
 			<input type="number" id="quantity" name="quantity" min="1" max="<%= prodotto.getDisponibilita() %>" value="1">

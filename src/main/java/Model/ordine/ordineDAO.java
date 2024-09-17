@@ -159,4 +159,6 @@ public class ordineDAO extends abstractDAO implements interfacciaDAO<ordineBean,
 
         return ordini;
     }
+
+
 }

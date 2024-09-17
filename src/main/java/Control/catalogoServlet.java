@@ -33,8 +33,10 @@ public class catalogoServlet extends javax.servlet.http.HttpServlet {
 											   .filter(p -> p.getDisponibilita() > 0)
 											   .collect(Collectors.toList());
 			            }
+
+
 		            
-		            request.setAttribute("prodotti", prodotti);
+		            session.setAttribute("tuttiProdotti", prodotti);
 		            request.getRequestDispatcher("/catalogo.jsp").forward(request, response);
 		            } catch (Exception e) {
 		                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());

@@ -1,7 +1,9 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="Model.carrello.carrelloBean, Model.prodottoCarrello.prodottoCarrelloBean, Model.prodottoCarrello.prodottoCarrelloDAO, Model.carrello.carrelloDAO" %>
-<%@ page import="java.sql.SQLException" %>
+<%@ page import="Model.prodottoCarrello.prodottoCarrelloBean" %>
+<%@ page import="Model.carrello.carrelloDAO" %>
 <%@ page import="java.util.List" %>
+<%@ page import="Model.prodottoCarrello.prodottoCarrelloDAO" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -11,32 +13,47 @@
     <link rel="stylesheet" href="style/carrello.css"> <!-- Aggiorna il percorso del CSS -->
 </head>
 <body>
+
 <main class="container">
+    <a href="<%= request.getContextPath() %>/catalogoServlet" class="back-button">Torna Indietro</a>
+    <!-- Pulsante per tornare indietro -->
+
     <h2>Il Tuo Carrello</h2>
 
-    <%
-        Long carrelloId = (Long) session.getAttribute("carrelloId");
+   <%
+    Long carrelloId = (Long) session.getAttribute("carrelloId");
+    List<prodottoCarrelloBean> prodotti = null;
+
+    try (carrelloDAO carrelloDAO = new carrelloDAO();
+         prodottoCarrelloDAO prodottoCarrelloDAO = new prodottoCarrelloDAO()) {
         if (carrelloId == null) {
-            System.out.println("<p>Il carrello è vuoto. <a href='catalogo.jsp'>Continua lo shopping</a></p>");
+%>
+    <p>Il carrello è vuoto. <a href='<%= request.getContextPath() %>/catalogoServlet' class="continue-shopping-button">Continua
+        lo shopping</a></p>
+        <%
+    } else {
+        // Recupera i prodotti nel carrello
+        prodotti = prodottoCarrelloDAO.doRetrieveByCarrelloId(carrelloId);
+
+        if (prodotti.isEmpty()) {
+%>
+    <p>Il carrello è vuoto. <a href='<%= request.getContextPath() %>/catalogo.jsp' class="continue-shopping-button">Continua
+        lo shopping</a></p>
+        <%
         } else {
-            try (carrelloDAO carrelloDAO = new carrelloDAO();
-                 prodottoCarrelloDAO prodottoCarrelloDAO = new prodottoCarrelloDAO()) {
-
-                List<prodottoCarrelloBean> prodotti = prodottoCarrelloDAO.getCartItemsAsProducts(carrelloId);
-
-                if (prodotti.isEmpty()) {
-                    System.out.println("<p>Il carrello è vuoto. <a href='catalogo.jsp'>Continua lo shopping</a></p>");
-                } else {
-    %>
+            // Salva la lista di prodotti nella sessione
+            session.setAttribute("cartItems", prodotti);
+%>
 
     <table>
         <thead>
         <tr>
             <th>Immagine</th>
             <th>Nome Prodotto</th>
-            <th>Quantita</th>
+            <th>Quantità</th>
             <th>Prezzo</th>
             <th>Totale</th>
+            <th>Azioni</th> <!-- Colonna per le azioni -->
         </tr>
         </thead>
         <tbody>
@@ -48,37 +65,50 @@
                 String imgPath = prodotto.getImgPath();
         %>
         <tr>
-            <td><img src="<%= imgPath %>" alt="<%= prodotto.getNome() %>" class="product-image"></td>
-            <td><%= prodotto.getNome() %></td>
-            <td><%= prodotto.getQuantita() %></td>
-            <td><%= prodotto.getPrezzo() %> €</td>
-            <td><%= String.format("%.2f", prezzoTotale) %> €</td>
+            <td><img src="<%=imgPath%>" alt="<%=prodotto.getNome()%>" class="product-image"></td>
+            <td><%=prodotto.getNome()%></td>
+            <td><%=prodotto.getQuantita()%></td>
+            <td><%=prodotto.getPrezzo()%> €</td>
+            <td><%=String.format("%.2f", prezzoTotale)%> €</td>
+            <td>
+                <!-- Form per rimuovere il prodotto -->
+                <form action="<%= request.getContextPath() %>/RimuovidalcarrelloServlet" method="post">
+                    <input type="hidden" name="productId" value="<%=prodotto.getId()%>">
+                    <button type="submit" class="removeFromCartButton">Rimuovi</button>
+                </form>
+            </td>
         </tr>
         <%
             }
+            // Salva il totale nella sessione
+            session.setAttribute("carrelloTotale", totale);
         %>
         </tbody>
         <tfoot>
         <tr>
             <td colspan="4"><strong>Totale</strong></td>
-            <td><strong><%= String.format("%.2f", totale) %> €</strong></td>
+            <td><strong><%=String.format("%.2f", totale)%> €</strong></td>
         </tr>
         </tfoot>
     </table>
 
     <div class="checkout-section">
-        <a href="checkout.jsp" class="checkout-button">Procedi all'ordine</a>
-        <a href="catalogoServlet" class="continue-shopping-button">Continua lo shopping</a>
+        <form action="<%= request.getContextPath() %>/OrdineServlet" method="post">
+            <input type="hidden" name="totale" value="<%= String.format("%.2f", totale) %>">
+            <input type="hidden" name="carrelloId" value="<%= carrelloId %>">
+            <button type="submit" class="checkout-button">Procedi all'ordine</button>
+        </form>
+        <a href="<%= request.getContextPath() %>/catalogoServlet" class="continue-shopping-button">Continua lo shopping</a>
     </div>
 
-    <%
-                }
-            } catch (SQLException e) {
-                System.out.println("<p>Errore nel recupero dei dati del carrello.</p>");
-                e.printStackTrace();
-            }
+        <%
         }
-    %>
+    }
+} catch (Exception e) {
+    System.out.println("<p>Errore inaspettato. Contattare l'amministratore del sistema.</p>");
+    e.printStackTrace();
+}
+%>
 </main>
 </body>
 </html>

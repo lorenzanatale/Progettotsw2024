@@ -17,6 +17,7 @@ public class logoutServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session != null) {
             // Rimuovi solo le informazioni dell'utente
+            session.removeAttribute("userId"); // Rimuovi ID dell'utente
             session.removeAttribute("user");
             // Non rimuovere l'ID del carrello dalla sessione
         }

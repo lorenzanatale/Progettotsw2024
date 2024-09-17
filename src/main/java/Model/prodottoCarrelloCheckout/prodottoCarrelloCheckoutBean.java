@@ -14,7 +14,26 @@ public class prodottoCarrelloCheckoutBean {
     private long idProdottoCarrello;
     private long idCarrello;
     private int quantita;
-    
+
+	public prodottoCarrelloCheckoutBean(long idProdotto, String nome, String descrizione, int disponibilita, String categoria, String iva, double prezzo, String imgPath, boolean isVisibile, long idProdottoCarrello, long idCarrello, int quantita) {
+		this.idProdotto = idProdotto;
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.disponibilita = disponibilita;
+		this.categoria = categoria;
+		this.iva = iva;
+		this.prezzo = prezzo;
+		this.imgPath = imgPath;
+		this.isVisibile = isVisibile;
+		this.idProdottoCarrello = idProdottoCarrello;
+		this.idCarrello = idCarrello;
+		this.quantita = quantita;
+	}
+
+	public prodottoCarrelloCheckoutBean() {
+
+	}
+
 	public long getIdProdotto() {
 		return idProdotto;
 	}

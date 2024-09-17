@@ -1,92 +1,126 @@
-@charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
-
-* {
+/* Assicurati che il body occupi l'intera altezza della finestra e utilizza uno sfondo gradiente */
+body {
+    background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat;
+    min-height: 100vh;
+    display: block;
     margin: 0;
-    border: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
 
-body {
-    background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat;
-    margin: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/* Stile principale del contenitore del carrello */
 main.container {
-    background: white;
-    width: auto;
+    background: #fff;
+    width: 90%;
+    max-width: 1200px;
     padding: 2rem;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: 2rem auto;
+    flex: 1;
 }
 
-main h2 {
-    font-weight: 600;
-    margin-bottom: 2rem;
-    position: relative;
-}
-
-main h2::before {
-    content: '';
-    position: absolute;
-    height: 4px;
-    width: 25px;
-    top: 29px;
-    left: 0;
-    border-radius: 8px;
-    background: linear-gradient(45deg, #8e2de2, #ebe1fb);
-}
-
+/* Stile per la tabella del carrello */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
+
+table thead th {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+table tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+}
+
 table img.product-image {
-    width: 100px; /* Dimensione dell'immagine */
-    height: auto; /* Mantieni le proporzioni */
+    width: 80px;
+    height: auto;
     border-radius: 4px;
     object-fit: cover;
 }
 
-table th, table td {
-    padding: 0.75rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    text-align: left;
+/* Sezione dei pulsanti di checkout e continua shopping */
+.checkout-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
 }
 
-table th, table td {
-    padding: 0.75rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    text-align: left;
-}
-
-table th {
-    background: #f4f4f4;
-}
-
-table tfoot tr {
-    font-weight: 600;
-}
-
-a.checkout-button {
-    display: inline-block;
-    padding: 0.75rem;
-    background: linear-gradient(to left, #4776E6, #eee1ff);
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 300;
-    border-radius: 4px;
-    text-decoration: none;
+/* Stile dei pulsanti */
+button, .checkout-button, .continue-shopping-button, .back-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff; /* Colore del testo dei pulsanti */
+    cursor: pointer;
+    font-size: 16px;
     text-align: center;
-    transition: background 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px;
+    transition: background-color 0.3s ease;
 }
 
-a.checkout-button:hover {
-    background: linear-gradient(to right, #4776E6, #d6bbfb);
+/* Colori dei pulsanti */
+button, .checkout-button, .continue-shopping-button, .back-button {
+    background-color: #5d2f91; /* Colore principale simile al gradiente */
+}
+
+/* Hover per pulsanti */
+button:hover, .checkout-button:hover, .continue-shopping-button:hover, .back-button:hover {
+    background-color: #3a1a59; /* Colore scuro per hover */
+}
+
+/* Pulsante per rimuovere dal carrello */
+.removeFromCartButton {
+    background-color: #dc3545; /* Colore rosso per il pulsante di rimozione */
+}
+
+.removeFromCartButton:hover {
+    background-color: #c82333; /* Colore rosso scuro per hover */
+}
+
+/* Pulsante "Torna Indietro" */
+.back-button {
+    background-color: #6c757d; /* Colore grigio per il pulsante di ritorno */
+}
+
+.back-button:hover {
+    background-color: #5a6268; /* Colore grigio scuro per hover */
+}
+
+/* Pulsante "Continua lo Shopping" */
+.continue-shopping-button {
+    background-color: #9c85e4; /* Colore lavanda chiaro */
+}
+
+.continue-shopping-button:hover {
+    background-color: #7f5fc5; /* Colore lavanda scuro per hover */
+}
+
+/* Adatta il layout su dispositivi mobili */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px;
+    }
+
+    table img.product-image {
+        width: 60px;
+    }
+
+    .checkout-section {
+        flex-direction: column;
+    }
+
+    .checkout-button, .continue-shopping-button, .back-button {
+        width: 100%;
+        margin: 5px 0;
+    }
 }

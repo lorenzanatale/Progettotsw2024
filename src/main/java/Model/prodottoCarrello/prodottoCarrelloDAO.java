@@ -94,8 +94,15 @@ public class prodottoCarrelloDAO extends abstractDAO implements interfacciaDAO<p
     }
 
     public void addProduct(long productId, long cartId, int quantity, String nome) throws SQLException {
-        String query1 = "SELECT * FROM ProdottoCarrello WHERE IdCarrello = ? and idProdotto = ?";
+        // Verifica se la connessione è valida
+        if (connection == null || connection.isClosed()) {
+            throw new SQLException("La connessione al database non è valida.");
+        }
+
+        // Controlla se il prodotto è già presente nel carrello
+        String query1 = "SELECT quantita FROM ProdottoCarrello WHERE IdCarrello = ? AND idProdotto = ?";
         boolean found = false;
+
         try (PreparedStatement statement = connection.prepareStatement(query1)) {
             statement.setLong(1, cartId);
             statement.setLong(2, productId);
@@ -107,25 +114,31 @@ public class prodottoCarrelloDAO extends abstractDAO implements interfacciaDAO<p
             }
         }
 
+        // Aggiorna o inserisce il prodotto
+        String query;
         if (found) {
-            String query = "UPDATE ProdottoCarrello SET quantita = ? WHERE idCarrello = ? AND idProdotto = ?";
-            try (PreparedStatement statement = connection.prepareStatement(query)) {
+            query = "UPDATE ProdottoCarrello SET quantita = ? WHERE IdCarrello = ? AND idProdotto = ?";
+        } else {
+            query = "INSERT INTO ProdottoCarrello (idProdotto, IdCarrello, quantita, nome) VALUES (?, ?, ?, ?)";
+        }
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            if (found) {
                 statement.setInt(1, quantity);
                 statement.setLong(2, cartId);
                 statement.setLong(3, productId);
-                statement.executeUpdate();
-            }
-        } else {
-            String query = "INSERT INTO ProdottoCarrello (idProdotto, idCarrello, quantita, nome) VALUES (?, ?, ?, ?)";
-            try (PreparedStatement statement = connection.prepareStatement(query)) {
+            } else {
                 statement.setLong(1, productId);
                 statement.setLong(2, cartId);
                 statement.setInt(3, quantity);
                 statement.setString(4, nome);
-                statement.executeUpdate();
             }
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException("Errore durante l'aggiunta o l'aggiornamento del prodotto nel carrello.", e);
         }
     }
+
 
     public void removeProduct(long productId, long cartId, int quantity) throws SQLException {
         String query1 = "SELECT * FROM ProdottoCarrello WHERE idCarrello = ? and idProdotto = ?";
@@ -168,23 +181,27 @@ public class prodottoCarrelloDAO extends abstractDAO implements interfacciaDAO<p
         String query = "SELECT pc.*, p.imgPath FROM ProdottoCarrello pc " +
                 "JOIN Prodotto p ON pc.idProdotto = p.id " +
                 "WHERE pc.idCarrello = ?";
-        ArrayList<prodottoCarrelloBean> prodotti = new ArrayList<>();
+        List<prodottoCarrelloBean> prodotti = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, cartId);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     prodottoCarrelloBean prodotto = new prodottoCarrelloBean();
-                    prodotto.setId(resultSet.getLong("idProdotto"));
-                    prodotto.setId(resultSet.getLong("idCarrello"));
-                    prodotto.setQuantita(resultSet.getInt("quantita"));
-                    prodotto.setNome(resultSet.getString("nome"));
-                    prodotto.setImgPath(resultSet.getString("imgPath"));
+
+                    // Assumendo che 'idProdotto', 'idCarrello', 'quantita', 'nome' siano i nomi dei campi nella tabella
+                    prodotto.setIdProdotto(resultSet.getLong("idProdotto")); // Assicurati che questo campo esista
+                    prodotto.setIdCarrello(resultSet.getLong("idCarrello")); // Assicurati che questo campo esista
+                    prodotto.setQuantita(resultSet.getInt("quantita")); // Assicurati che questo campo esista
+                    prodotto.setNome(resultSet.getString("nome")); // Assicurati che questo campo esista
+                    prodotto.setImgPath(resultSet.getString("imgPath")); // Assicurati che questo campo esistaprodotto.setPrezzo(resultSet.getDouble("prezzo")); // Solo se esiste un campo 'prezzo'
                     prodotti.add(prodotto);
                 }
             }
         }
+
         return prodotti;
     }
+
 
     private prodottoCarrelloBean extractCartItemFromResultSet(ResultSet resultSet) throws SQLException {
         prodottoCarrelloBean prodottoCarrello = new prodottoCarrelloBean();
@@ -195,7 +212,7 @@ public class prodottoCarrelloDAO extends abstractDAO implements interfacciaDAO<p
         return prodottoCarrello;
     }
 
-    public List<prodottoCarrelloBean>doRetrieveByCarrelloId(long carrelloId) {
+    public List<prodottoCarrelloBean> doRetrieveByCarrelloId(long carrelloId) {
         try {
             List<prodottoCarrelloBean> prodotti = new ArrayList<>();
 
@@ -236,4 +253,6 @@ public class prodottoCarrelloDAO extends abstractDAO implements interfacciaDAO<p
     }
 
 
-    }
+
+}
+

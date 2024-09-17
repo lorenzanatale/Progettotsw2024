@@ -1,77 +1,75 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="javax.servlet.http.HttpSession" %>
-<%@ page import="java.util.List" %>
 <%@ page import="Model.prodottoCarrello.prodottoCarrelloBean" %>
-<%@ page import="Model.prodotto.prodottoBean" %>
-
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Checkout</title>
     <link rel="stylesheet" href="style/checkout.css">
 </head>
 <body>
-<main>
+<main class="container">
     <h1>Checkout</h1>
-    <%
-        HttpSession session1 = request.getSession();
-        List<prodottoCarrelloBean> prodottiNelCarrello = (List<prodottoCarrelloBean>) session.getAttribute("prodottiCarrello");
-        boolean isLoggedIn = session1.getAttribute("user") != null;
-        double totale = 0.0;
+    <form action="ConfermaOrdine" method="post">
+        <section class="delivery-info">
+            <h2>Informazioni per la consegna</h2>
+            <label for="Nome">Nome</label>
+            <input type="text" id="Nome" name="nome" required><br>
 
-        if (!isLoggedIn) {
-    %>
-    <p>Per procedere al checkout, <a href="login.jsp">effettua il login</a>.</p>
-    <%
-    } else if (prodottiNelCarrello == null || prodottiNelCarrello.isEmpty()) {
-    %>
-    <p>Il carrello è vuoto.</p>
-    <%
-    } else {
-        totale = (Double) request.getAttribute("totale");
-    %>
-    <table>
-        <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Descrizione</th>
-            <th>Prezzo</th>
-            <th>Quantità</th>
-            <th>Immagine</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%
-            for (prodottoCarrelloBean carrelloBean : prodottiNelCarrello) {
-                prodottoBean prodotto = carrelloBean.getProdottoBean();
-                if (prodotto != null) {
-                    double prezzoTotale = prodotto.getPrezzo() * carrelloBean.getQuantita();
-                    totale += prezzoTotale;
-        %>
-        <tr>
-            <td><%= prodotto.getNome() %></td>
-            <td><%= prodotto.getDescrizione() %></td>
-            <td>€<%= prodotto.getPrezzo() %></td>
-            <td><%= carrelloBean.getQuantita() %></td>
-            <td>
-                <img src="<%= prodotto.getImgPath() %>" alt="<%= prodotto.getNome() %>">
-            </td>
-        </tr>
-        <%
-                } else {
-                    System.out.println("Warning: Null prodottoBean found in cart");
+            <label for="Cognome">Cognome</label>
+            <input type="text" id="Cognome" name="cognome" required><br>
+
+            <label for="address">Indirizzo:</label>
+            <input type="text" id="address" name="address" required><br>
+
+            <label for="city">Città:</label>
+            <input type="text" id="city" name="city" required><br>
+
+            <label for="postalCode">CAP:</label>
+            <input type="text" id="postalCode" name="postalCode" required><br>
+        </section>
+
+        <section class="order-summary">
+            <h2>Riepilogo Ordine</h2>
+            <%
+                // Recupera i prodotti e calcola il totale
+                List<prodottoCarrelloBean> cartItems = (List<prodottoCarrelloBean>) session.getAttribute("prodotti");
+                double totale = 0.0;
+
+                if (cartItems != null && !cartItems.isEmpty()) {
+                    for (prodottoCarrelloBean prodotto : cartItems) {
+                        int quantity = prodotto.getQuantita();
+                        double prezzoTotale = prodotto.getPrezzo() * quantity;
+                        totale += prezzoTotale;
+            %>
+            <p>Prodotto: <%= prodotto.getNome() %> <br></p>
+            <p>Quantità: <%= quantity %> <br></p>
+            <p>Prezzo: <%= String.format("%.2f", prodotto.getPrezzo()) %>€ <br></p>
+            <p>Totale: <%= String.format("%.2f", prezzoTotale) %>€ <br></p>
+            <%
+                    }
                 }
-            }
-        %>
-        </tbody>
-    </table>
-    <p class="total">Totale: €<%= String.format("%.2f", totale) %></p>
-    <form action="createOrder" method="post">
-        <input type="submit" value="Conferma Ordine">
+            %>
+            <h3>Totale: €<%= String.format("%.2f", totale) %></h3>
+            <%
+                // Recupera l'Order ID dalla sessione
+                Long orderId = (Long) session.getAttribute("orderId");
+                if (orderId != null) {
+            %>
+            <h4>ID Ordine: <%= orderId %></h4>
+            <%
+            } else {
+            %>
+            <%
+                }
+            %>
+        </section>
+
+        <!-- Link to payment page -->
+        <h3><a href="pagamento.jsp" class="checkout-button">Procedi al pagamento</a></h3>
     </form>
-    <%
-        }
-    %>
 </main>
 </body>
 </html>

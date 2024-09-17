@@ -28,7 +28,7 @@
 	</script>
 	
 	
-	<% List<prodottoBean> prodotti = (List<prodottoBean>) request.getAttribute("prodotti"); %>
+	<% List<prodottoBean> prodotti = (List<prodottoBean>) session.getAttribute("tuttiProdotti"); %>
 	
 	<div class="product-container">
 	    <% for(prodottoBean prodotto : prodotti) { 

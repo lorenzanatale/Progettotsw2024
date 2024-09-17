@@ -118,4 +118,17 @@ public class carrelloDAO extends abstractDAO implements interfacciaDAO<carrelloB
         }
         throw new RuntimeSQLException("CartId not found");
     }
-}
+
+		// Metodo per eliminare tutti i prodotti associati a un carrello
+		public void removeAllProductsFromCart(long carrelloId) throws SQLException {
+			String query = "DELETE FROM prodottocarrello WHERE idCarrello = ?";
+			try (PreparedStatement statement = connection.prepareStatement(query)) {
+				statement.setLong(1, carrelloId);
+				int rowsAffected = statement.executeUpdate();
+				if (rowsAffected == 0) {
+					throw new SQLException("No products were removed. Check if the cart ID is correct.");
+				}
+			}
+		}
+	}
+

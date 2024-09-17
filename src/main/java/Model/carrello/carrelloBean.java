@@ -3,6 +3,7 @@ package Model.carrello;
 import Model.prodottoCarrello.prodottoCarrelloBean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class carrelloBean implements Serializable{
@@ -11,7 +12,9 @@ public class carrelloBean implements Serializable{
 	private long idUtente;
 	private List<prodottoCarrelloBean> prodotti;
 	
-	public carrelloBean() {}
+	public carrelloBean() {
+	prodotti = new ArrayList<prodottoCarrelloBean>();
+	}
 	
 	public long getId() {
 		return id;

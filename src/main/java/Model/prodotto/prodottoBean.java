@@ -12,8 +12,23 @@ public class prodottoBean implements Serializable {
 	private double prezzo;
 	private String imgPath;
 	private boolean isVisibile;
-	
-	public prodottoBean() {}
+
+	public prodottoBean(long id, String nome, String descrizione, int disponibilita, String categoria, String iva, double prezzo, String imgPath, boolean isVisibile) {
+		this.id = id;
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.disponibilita = disponibilita;
+		this.categoria = categoria;
+		this.iva = iva;
+		this.prezzo = prezzo;
+		this.imgPath = imgPath;
+		this.isVisibile = isVisibile;
+	}
+
+
+	public prodottoBean() {
+
+	}
 	
 	public long getId() {
 		return id;

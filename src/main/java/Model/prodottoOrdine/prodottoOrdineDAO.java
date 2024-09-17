@@ -41,14 +41,14 @@ public class prodottoOrdineDAO extends abstractDAO implements interfacciaDAO <pr
     
     @Override
     public long doSave(prodottoOrdineBean orderItem) throws SQLException {
-        String query = "INSERT INTO ProdottoOrdine (IdOrdine, IdProdotto, Prezzo, quantità, Iva, Nome) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO ProdottoOrdine (IdOrdine, IdProdotto, Prezzo, Quantita, Iva, Nome) VALUES (?, ?, ?, ?, ?, ?)";
         long generatedKey = -1;
         try (PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             statement.setLong(1, orderItem.getIdOrdine());
             statement.setLong(2, orderItem.getIdProdotto());
             statement.setDouble(3, orderItem.getPrezzo());
             statement.setLong(4, orderItem.getQuantita());
-            statement.setString(5, Integer.toString(orderItem.getIva()));
+            statement.setString(5, "22");
             statement.setString(6, orderItem.getNome());
             if (statement.executeUpdate() > 0){
                 ResultSet resultSet = statement.getGeneratedKeys();

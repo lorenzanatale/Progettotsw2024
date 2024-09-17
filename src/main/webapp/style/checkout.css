@@ -1,8 +1,15 @@
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
-/* Stile di base per la pagina */
-body {
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+}
+
+body {
     background: linear-gradient(45deg, #e7e5f1, #8737DAFF) no-repeat;
     margin: 0;
     display: flex;
@@ -11,152 +18,89 @@ body {
     min-height: 100vh;
 }
 
-/* Contenitore principale del carrello */
 main.container {
     background: white;
     width: 90%;
-    max-width: 1200px;
+    max-width: 800px;
     padding: 2rem;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    margin-top: 20px;
 }
 
-/* Stile per il titolo */
 main h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+section h2 {
     font-weight: 600;
     margin-bottom: 1rem;
-    text-align: center;
-    color: #333;
+    position: relative;
+    font-size: 1.5rem;
 }
 
-/* Stile per la tabella */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-}
-
-thead th {
+section h2::before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 25px;
+    top: 29px;
+    left: 0;
+    border-radius: 8px;
     background: linear-gradient(45deg, #8e2de2, #ebe1fb);
-    color: white;
+}
+
+form label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+form input[type="text"] {
     padding: 0.75rem;
-    text-align: left;
-}
-
-tbody tr {
-    border-bottom: 1px solid #ddd;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-td {
-    padding: 0.75rem;
-    text-align: left;
-}
-
-img {
-    max-width: 100px;
-    height: auto;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
     border-radius: 4px;
+    width: 100%;
 }
 
-/* Stile per i pulsanti */
-.action-button {
+form input[type="submit"] {
     display: inline-block;
-    padding: 5px 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    background: linear-gradient(45deg, #8e2de2, #ebe1fb);
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(to left, #4776E6, #eee1ff);
     color: white;
     font-size: 0.9rem;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-}
-
-.action-button:hover {
-    background: linear-gradient(45deg, #7a1fcb, #d2b8ff);
-}
-
-/* Stile per il messaggio quando il carrello è vuoto */
-p.empty-message {
-    text-align: center;
-    color: #666;
-    font-size: 1.2rem;
-}
-
-.total {
-    font-weight: bold;
-    margin-top: 1rem;
-    text-align: right;
-    color: #333;
-}
-
-.checkout-button {
-    display: block;
-    width: 200px;
-    padding: 10px;
-    margin: 1rem auto;
+    font-weight: 500;
+    border-radius: 4px;
     border: none;
-    border-radius: 5px;
-    background: linear-gradient(45deg, #8e2de2, #ebe1fb);
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    text-align: center;
     text-decoration: none;
+    text-align: center;
+    transition: background 0.3s ease;
+    cursor: pointer;
+    margin-top: 1rem;
 }
 
-.checkout-button:hover {
-    background: linear-gradient(45deg, #7a1fcb, #d2b8ff);
+form input[type="submit"]:hover {
+    background: linear-gradient(to right, #4776E6, #d6bbfb);
 }
 
-/* Responsività */
-@media (max-width: 768px) {
-    main.container {
-        padding: 1rem;
-    }
-
-    table {
-        font-size: 0.9rem;
-    }
-
-    td, th {
-        padding: 0.5rem;
-    }
-
-    img {
-        max-width: 80px;
-    }
+/* Flexbox alignment for form elements */
+form div {
+    display: flex;
+    flex-direction: column;
 }
 
-@media (max-width: 480px) {
-    main.container {
-        width: 95%;
-        padding: 0.5rem;
-    }
-
-    table {
-        font-size: 0.8rem;
-    }
-
-    td, th {
-        padding: 0.25rem;
-    }
-
-    img {
-        max-width: 60px;
-    }
-
-    p.empty-message {
-        font-size: 1rem;
-    }
+form div + div {
+    margin-top: 1rem;
 }

@@ -46,8 +46,10 @@ public class loginServlet extends HttpServlet {
 		// Visualizza gli articoli del carrello dell'utente, se presenti
 		session.setAttribute("userCartId", user.getId()); // Presumendo che il carrello dell'utente sia identificato dal suo ID
 
+
 		response.sendRedirect(request.getContextPath() + "/home.jsp");
 	}
+
 
 	private boolean checkLogin(utenteBean user, String password) {
 		return Sicurezza.verifyPassword(password, user.getPassword());
