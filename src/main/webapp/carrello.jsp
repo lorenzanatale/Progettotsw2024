@@ -72,8 +72,8 @@
             <td><%=String.format("%.2f", prezzoTotale)%> €</td>
             <td>
                 <!-- Form per rimuovere il prodotto -->
-                <form action="<%= request.getContextPath() %>/RimuovidalcarrelloServlet" method="post">
-                    <input type="hidden" name="productId" value="<%=prodotto.getId()%>">
+                <form action="<%= request.getContextPath() %>/RimuoviCarrelloServlet" method="post">
+                    <input type="hidden" name="productId" value="<%=prodotto.getIdProdotto()%>">
                     <button type="submit" class="removeFromCartButton">Rimuovi</button>
                 </form>
             </td>

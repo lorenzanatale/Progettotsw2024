@@ -1,6 +1,6 @@
-
 package Control;
 
+import Model.carrello.carrelloBean;
 import Model.carrello.carrelloDAO;
 import Model.prodottoCarrello.prodottoCarrelloBean;
 import Model.prodottoCarrello.prodottoCarrelloDAO;
@@ -16,62 +16,68 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/RimuovidalcarrelloServlet")
+@WebServlet("/RimuoviCarrelloServlet")
 public class RimuoviCarrello extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        long prodottoId;
+        long prodotto;
+        int quantita;
 
         // Leggi parametri dalla richiesta
         try {
-            prodottoId = Long.parseLong(request.getParameter("productId"));
+            prodotto = Long.parseLong(request.getParameter("productId"));
         } catch (NumberFormatException e) {
-            log("Invalid productId input: " + request.getParameter("productId"), e);
-            response.sendRedirect("error.jsp?message=Invalid product ID");
+            response.sendRedirect("error.jsp?message=Invalid input");
             return;
         }
 
         HttpSession session = request.getSession();
         Long carrelloId = (Long) session.getAttribute("carrelloId");
-
-        if (carrelloId == null) {
-            log("Carrello non trovato per l'utente.");
-            response.sendRedirect("error.jsp?message=Cart not found");
-            return;
-        }
+        Long userId = (Long) session.getAttribute("userId");
 
         try (carrelloDAO carrelloDAO = new carrelloDAO();
              prodottoCarrelloDAO prodottoCarrelloDAO = new prodottoCarrelloDAO()) {
-            // Rimuovi il prodotto dal carrello
-            prodottoCarrelloDAO.removeProduct(prodottoId, carrelloId);
-            log("Prodotto rimosso dal carrello. ID prodotto: " + prodottoId);
 
-            // Recupera gli articoli rimanenti nel carrello
-            List<prodottoCarrelloBean> prodotti = prodottoCarrelloDAO.doRetrieveByCarrelloId(carrelloId);
-            System.out.println(prodotti);
-            if (prodotti.isEmpty()) {
-                session.setAttribute("emptyCartMessage", "Il tuo carrello è vuoto.");
+            if (userId != null) {
+                // Utente loggato: recupera o crea il carrello
+                if (carrelloId == null) {
+                    carrelloId = carrelloDAO.doRetrieveByUserId(userId);
+                    session.setAttribute("carrelloId", carrelloId);
+                }
             } else {
-                session.setAttribute("prodotti", prodotti);
-                session.removeAttribute("emptyCartMessage");
+                // Utente anonimo: gestisci carrello senza cookie
+                if (carrelloId == null) {
+                    carrelloBean carrello = new carrelloBean();
+                    carrello.setIdUtente(0); // Indica utente anonimo
+                    carrelloId = carrelloDAO.doSave(carrello);
+                    session.setAttribute("carrelloId", carrelloId);
+                }
             }
 
-            // Reindirizza alla pagina del carrello
+            // Rimuovi il prodotto dal carrello
+            prodottoCarrelloDAO.removeProduct(prodotto, carrelloId);
+
+            // Recupera gli articoli del carrello per visualizzazione
+            List<prodottoCarrelloBean> prodotti = prodottoCarrelloDAO.doRetrieveByCarrelloId(carrelloId);
+            if (prodotti.isEmpty()) {
+                session.setAttribute("emptyCartMessage", "Il tuo carrello è vuoto.");
+                session.removeAttribute("prodotti");
+            } else {
+                session.setAttribute("prodotti", prodotti);
+                session.removeAttribute("emptyCartMessage"); // Rimuovi il messaggio se il carrello non è vuoto
+            }
+
+            // Forward alla JSP per visualizzare il carrello aggiornato
             request.getRequestDispatcher("carrello.jsp").forward(request, response);
 
-        } catch (SQLException e){
-            log("SQL error during product removal or cart retrieval", e);
-            response.sendRedirect("error.jsp?message=Database error");
+        } catch (SQLException e) {
+            throw new ServletException("Error managing cart", e);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            request.getRequestDispatcher("carrello.jsp").forward(request, response);
-        } catch (Exception e) {
-            log("Error forwarding to carrello.jsp", e);
-            response.sendRedirect("error.jsp?message=Unable to load cart");
-        }
+        // Redirect alla JSP di visualizzazione del carrello
+        request.getRequestDispatcher("carrello.jsp").forward(request, response);
     }
 }
